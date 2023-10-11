@@ -14,6 +14,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Driver_server" target="17" />
+      <module name="package-server" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -21,6 +22,7 @@
       <module name="Driver_server" options="-parameters" />
       <module name="Package_server" options="-parameters" />
       <module name="Service_Registry" options="-parameters" />
+      <module name="package-server" options="-parameters" />
       <module name="user_server" options="-parameters" />
     </option>
   </component>

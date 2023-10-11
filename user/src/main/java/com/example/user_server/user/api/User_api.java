@@ -30,10 +30,14 @@ public class User_api {
     private UserService userService;
 
 
+//this goes to package
     @GetMapping( "/check")
     public String getCheck_USER(){
         return "User API RUNNING !!!!";
     }
+
+
+
 
     @PostMapping(value = "/save", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseController save(

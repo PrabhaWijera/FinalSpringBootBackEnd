@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.print.attribute.standard.Media;
-
 @CrossOrigin
 @RestController
 @RequestMapping("/package_server")
@@ -27,7 +25,7 @@ public class Package {
     }
 
     @PostMapping(path = "/P_save",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController save(@RequestBody Package_dto packageDto){
+    public ResponseController  save(@RequestBody Package_dto packageDto){
         System.out.println("Package save working");
         return packageService.save(packageDto);
     }
@@ -44,7 +42,7 @@ public class Package {
     }
 
     @GetMapping(path = "/P_search",params = "Package_ID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController search(@RequestParam("Package_ID") String packageID){
+    public ResponseController  search(@RequestParam("Package_ID") String packageID){
         return packageService.search(packageID);
     }
 }

@@ -2,6 +2,7 @@ package com.example.packageserver.package_server.service.custom.impl;
 
 import com.example.packageserver.package_server.dto.Package_dto;
 import com.example.packageserver.package_server.entity.Package_entity;
+import com.example.packageserver.package_server.fign.PackageFiegnInterfaec;
 import com.example.packageserver.package_server.repo.Package_repo;
 import com.example.packageserver.package_server.res.ResponseController;
 import com.example.packageserver.package_server.service.custom.PackageService;
@@ -26,19 +27,30 @@ public class PackageService_impl implements PackageService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private ResponseController  responseController;
+
 
     //Rest templet for communication other servers
     //Fientclient , Service Discovery we use
 
-
-
-
     @Autowired
-    private ResponseController responseController;
+    PackageFiegnInterfaec packageFiegnInterfaec;
+
+    public String getCheckUser() {
+        String checkUser = packageFiegnInterfaec.getCheckUser();
+        return checkUser;
+    }
+
+   /* public String getCheckUser = packageFiegnInterfaec.getCheckUser(); null nisa comment kala*/
+
+
+    //-------------------------------------------------------
+
 
 
     @Override
-    public ResponseController search(String id) {
+    public ResponseController  search(String id) {
         Optional<Package_entity>packageEntity=packageRepo.findById(id);
         if (packageEntity.isPresent()){
             return createResponse(HttpStatus.FOUND.value(), modelMapper.map(packageEntity.get(),Package_dto.class),"success");
@@ -56,7 +68,7 @@ public class PackageService_impl implements PackageService {
     }
 
     @Override
-    public ResponseController update(Package_dto packageDto) {
+    public ResponseController  update(Package_dto packageDto) {
         if (search(packageDto.getPackage_id()).getData() !=null){
             packageRepo.save(modelMapper.map(packageDto,Package_entity.class));
             return createResponse(HttpStatus.OK.value(), null,"Update OK!");
@@ -66,7 +78,7 @@ public class PackageService_impl implements PackageService {
     }
 
     @Override
-    public ResponseController delete(String id) {
+    public ResponseController  delete(String id) {
         if (search(id).getData()!=null){
         packageRepo.deleteById(id);
         return createResponse(HttpStatus.OK.value(),null,"Delete OK");
@@ -75,7 +87,7 @@ public class PackageService_impl implements PackageService {
     }
 
     @Override
-    public ResponseController getAll() {
+    public ResponseController  getAll() {
         List<Package_entity>packageEntities=packageRepo.findAll();
         if (!packageEntities.isEmpty()){
             ArrayList<Package_dto> packageDtos=new ArrayList<>();
@@ -88,8 +100,8 @@ public class PackageService_impl implements PackageService {
     }
 
     @Override
-    public ResponseController createResponse(int statusCode, Object data, String message) {
-        ResponseController responseController1=new ResponseController();
+    public ResponseController  createResponse(int statusCode, Object data, String message) {
+        ResponseController  responseController1=new ResponseController ();
         responseController1.setStatus_code(statusCode);
         responseController1.setData(data);
         responseController1.setMessage(message);

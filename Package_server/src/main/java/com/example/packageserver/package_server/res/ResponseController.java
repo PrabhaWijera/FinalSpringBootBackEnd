@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ResponseController {
+public class ResponseController<S> {
 
 
 
