@@ -23,6 +23,7 @@ public class AuthService {
     private JwtService jwtService;
 
     public ResponseController register(UserEntity userDetails) {
+        System.out.println(userDetails);
         String password = passwordEncoder.encode(userDetails.getPassword());
         userDetails.setUser_password(password);
         userRepo.save(userDetails);

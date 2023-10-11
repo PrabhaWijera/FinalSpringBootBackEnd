@@ -30,9 +30,6 @@ public class User_api {
     private UserService userService;
 
 
-
-
-
     @GetMapping( "/check")
     public String getCheck_USER(){
         return "User API RUNNING !!!!";
@@ -42,10 +39,13 @@ public class User_api {
     public ResponseController save(
             @RequestPart("userDto") User_dto userDto,
             @RequestPart("profilePicture") MultipartFile profilePicture
+
     ) throws IOException {
         // Handle userDto and profilePicture here
         System.out.println("User save working");
 
+        System.out.println(userDto.getUserName());
+        System.out.println(ResponseController.class);
         if (profilePicture != null) {
             // Convert the profilePicture to a Base64-encoded string
             String base64ProfilePicture = Base64.getEncoder().encodeToString(profilePicture.getBytes());
