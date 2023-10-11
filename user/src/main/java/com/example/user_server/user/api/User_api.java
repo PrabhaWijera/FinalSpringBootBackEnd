@@ -7,6 +7,7 @@ import com.example.user_server.user.res.ResponseController;
 import com.example.user_server.user.service.custom.UserService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -29,10 +30,20 @@ public class User_api {
     @Autowired
     private UserService userService;
 
+    // load balancing -telu
+
+    @Autowired
+    Environment environment;
+
+
+//---------------------
+
+
 
 //this goes to package
     @GetMapping( "/check")
     public String getCheck_USER(){
+        System.out.println(environment.getProperty("local.sever.port"));
         return "User API RUNNING !!!!";
     }
 
