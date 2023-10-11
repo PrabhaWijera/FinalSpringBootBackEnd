@@ -11,6 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.Base64;
 
 @CrossOrigin
 @RestController
@@ -34,9 +38,22 @@ public class User_api {
         return "User API RUNNING !!!!";
     }
 
-    @PostMapping(path = "/Usave",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController save(@RequestBody User_dto userDto){
+    @PostMapping(value = "/save", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseController save(
+            @RequestPart("userDto") User_dto userDto,
+            @RequestPart("profilePicture") MultipartFile profilePicture
+    ) throws IOException {
+        // Handle userDto and profilePicture here
         System.out.println("User save working");
+
+        if (profilePicture != null) {
+            // Convert the profilePicture to a Base64-encoded string
+            String base64ProfilePicture = Base64.getEncoder().encodeToString(profilePicture.getBytes());
+
+            // Set the Base64-encoded profile picture in the userDto
+            userDto.setUserNic_Photo(base64ProfilePicture);
+        }
+
         return userService.save(userDto);
     }
 

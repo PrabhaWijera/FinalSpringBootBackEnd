@@ -65,13 +65,23 @@ public class UserService_impl implements UserService {
 
 
     @Override
+    @Transactional
     public ResponseController save(User_dto userDto) {
-         if (search(userDto.getUser_id()).getData()==null){
-             userRepo.save(modelMapper.map(userDto,UserEntity.class));
+        // Check if the user with the specified user_id already exists
+        UserEntity existingUser = (UserEntity) search(userDto.getUser_id()).getData();
 
-             return createResponse(HttpStatus.OK.value(), null,"save ok ");
-         }
-         throw new RuntimeException("User not exists");
+        if (existingUser == null) {
+            // Additional validation logic can be added here
+
+            // Map the User_dto to UserEntity and save it
+            UserEntity newUser = modelMapper.map(userDto, UserEntity.class);
+            userRepo.save(newUser);
+
+            return createResponse(HttpStatus.OK.value(), newUser, "User saved successfully");
+        } else {
+            // User with the same user_id already exists
+            throw new RuntimeException("User with this ID already exists");
+        }
     }
 
     @Override

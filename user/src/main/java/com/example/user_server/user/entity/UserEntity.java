@@ -43,6 +43,8 @@ public class UserEntity implements UserDetails {
 
     private String remark;
 
+    @Lob
+    @Column(nullable = false,columnDefinition = "Text")
     private String userNic_Photo;
 
     @Enumerated
