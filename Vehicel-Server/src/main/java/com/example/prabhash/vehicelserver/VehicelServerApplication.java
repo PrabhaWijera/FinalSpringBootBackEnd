@@ -10,6 +10,7 @@ public class VehicelServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(VehicelServerApplication.class, args);
+        System.out.println("Vehicle-SERVER IS RUNNING!!!");
     }
 
 }

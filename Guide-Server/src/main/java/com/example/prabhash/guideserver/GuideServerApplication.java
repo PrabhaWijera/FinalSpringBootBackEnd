@@ -11,6 +11,7 @@ public class GuideServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(GuideServerApplication.class, args);
+        System.out.println("GUIDE-SERVER IS RUNNING!!!");
     }
 
 }

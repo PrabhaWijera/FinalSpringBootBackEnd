@@ -8,6 +8,7 @@ public class PackageDetailsServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(PackageDetailsServerApplication.class, args);
+        System.out.println("PACKAGE-DETAILS-SERVER IS RUNNING!!!");
     }
 
 }

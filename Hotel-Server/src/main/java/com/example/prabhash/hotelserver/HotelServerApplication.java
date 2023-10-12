@@ -10,6 +10,7 @@ public class HotelServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HotelServerApplication.class, args);
+        System.out.println("HOTEL-SERVER IS RUNNING!!!");
     }
 
 }
