@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Service_Registry" />
+        <module name="Hotel-Server" />
         <module name="user_server" />
         <module name="API-gateway" />
         <module name="Vehicel-Server" />
@@ -23,6 +24,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="API-gateway" options="-parameters" />
       <module name="Driver_server" options="-parameters" />
+      <module name="Hotel-Server" options="-parameters" />
       <module name="Package_server" options="-parameters" />
       <module name="Service_Registry" options="-parameters" />
       <module name="Vehicel-Server" options="-parameters" />
