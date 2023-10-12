@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/Driver_server/pom.xml" />
         <option value="$PROJECT_DIR$/Service_Registry/pom.xml" />
         <option value="$PROJECT_DIR$/API-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/Vehicel-Server/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

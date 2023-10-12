@@ -10,6 +10,7 @@
         <module name="Service_Registry" />
         <module name="user_server" />
         <module name="API-gateway" />
+        <module name="Vehicel-Server" />
         <module name="Package_server" />
       </profile>
     </annotationProcessing>
@@ -24,6 +25,7 @@
       <module name="Driver_server" options="-parameters" />
       <module name="Package_server" options="-parameters" />
       <module name="Service_Registry" options="-parameters" />
+      <module name="Vehicel-Server" options="-parameters" />
       <module name="package-server" options="-parameters" />
       <module name="user_server" options="-parameters" />
     </option>
