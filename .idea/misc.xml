@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/Vehicel-Server/pom.xml" />
         <option value="$PROJECT_DIR$/Hotel-Server/pom.xml" />
         <option value="$PROJECT_DIR$/Package-Details-Server/pom.xml" />
+        <option value="$PROJECT_DIR$/Guide-Server/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

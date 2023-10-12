@@ -14,6 +14,7 @@
         <module name="Hotel-Server" />
         <module name="user_server" />
         <module name="Package_server" />
+        <module name="Guide-Server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -25,6 +26,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="API-gateway" options="-parameters" />
       <module name="Driver_server" options="-parameters" />
+      <module name="Guide-Server" options="-parameters" />
       <module name="Hotel-Server" options="-parameters" />
       <module name="Package-Details-Server" options="-parameters" />
       <module name="Package_server" options="-parameters" />
