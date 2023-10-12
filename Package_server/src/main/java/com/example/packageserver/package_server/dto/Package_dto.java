@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class Package_dto implements Serializable,Super_dto{
 
 
+
     private String package_id;
 
     private String hotel_id;

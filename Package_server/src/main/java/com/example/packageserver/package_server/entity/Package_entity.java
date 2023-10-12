@@ -16,7 +16,15 @@ public class Package_entity {
     @Id
     private String package_id;
 
+
     private String hotel_id;
 
     private String vehical_id;
+
+
+
+
+
+
+
 }
