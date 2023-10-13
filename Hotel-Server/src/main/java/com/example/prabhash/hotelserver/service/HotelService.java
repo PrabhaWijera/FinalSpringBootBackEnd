@@ -1,11 +1,12 @@
 package com.example.prabhash.hotelserver.service;
 
+import com.example.prabhash.hotelserver.dto.Hotel_dto;
 import com.example.prabhash.hotelserver.dto.SuperDto;
 import com.example.prabhash.hotelserver.res.ResponseController;
 import org.springframework.stereotype.Service;
 
-@Service
-public interface HotelService <T extends SuperDto,ID> {
+
+public interface HotelService <T extends Hotel_dto,ID> {
 
     ResponseController search(String id);
 
