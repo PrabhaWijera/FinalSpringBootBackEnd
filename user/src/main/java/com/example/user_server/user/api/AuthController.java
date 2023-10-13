@@ -34,15 +34,13 @@ public class AuthController {
 
 
 
-    private String serviceUrl;
 
     @PostMapping(path = "/register",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseController register(@RequestBody UserEntity userDetails){
-        ResponseEntity<ResponseController> response = restTemplate.postForEntity(serviceUrl, userDetails, ResponseController.class);
-        return response.getBody();
-       /* authService.register(userDetails);
+
+        authService.register(userDetails);
         System.out.println(environment.getProperty("local.sever.port"));
-        return response;*/
+        return response;
     }
 
 }
