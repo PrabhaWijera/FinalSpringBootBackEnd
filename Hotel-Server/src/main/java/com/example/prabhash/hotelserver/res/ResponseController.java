@@ -1,4 +1,4 @@
-package com.example.user_server.user.res;
+package com.example.prabhash.hotelserver.res;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
