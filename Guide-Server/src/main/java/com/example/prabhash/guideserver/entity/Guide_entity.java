@@ -5,10 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,22 +18,23 @@ public class Guide_entity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String guideID;
-
+    @NotBlank
     private String guideName;
-
+    @NotBlank
     private String guideAddress;
-
+    @NotBlank
     private String guideAge;
-
+    @NotBlank
     private String guideGender;
-
+    @NotBlank
     private String guidePICImage;
-
+    @NotBlank
     private String guideNICFrontIMG;
-
+    @NotBlank
     private String guideNICRearIMG;
-
+    @NotBlank
     private String guideIDscannedFrontIMG;
+    @NotBlank
     private String guideIDscannedRearIMG;
 
     private String guideExperience;

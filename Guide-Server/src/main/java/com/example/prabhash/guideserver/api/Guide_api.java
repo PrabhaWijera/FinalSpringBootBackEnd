@@ -4,6 +4,7 @@ package com.example.prabhash.guideserver.api;
 import com.example.prabhash.guideserver.dto.Guide_dto;
 import com.example.prabhash.guideserver.res.ResponseController;
 import com.example.prabhash.guideserver.service.GuideService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -19,26 +20,26 @@ public class Guide_api {
 
 
    @PostMapping(path = "Gsave",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController save(@RequestBody Guide_dto guideDto){
+    public ResponseController save(@Valid @RequestBody Guide_dto guideDto){
        System.out.println("Guide save"+guideDto.toString());
        return guideService.save(guideDto);
 
    }
 
    @GetMapping(path = "Gget",params = "guideID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController get(@RequestParam("guideID") String guideID){
+    public ResponseController get(@Valid @RequestParam("guideID") String guideID){
        System.out.println("Guide search"+guideID);
      return guideService.search(guideID);
    }
 
    @PutMapping(path = "Gput",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-   public ResponseController update(@RequestBody Guide_dto guideDto){
+   public ResponseController update(@Valid @RequestBody Guide_dto guideDto){
        System.out.println("update guide"+guideDto.toString());
        return guideService.save(guideDto);
    }
 
    @DeleteMapping(path = "Gdelete",params = "guideID",produces = MediaType.APPLICATION_JSON_VALUE)
-   public ResponseController delete(@RequestParam("guideID") String guideID){
+   public ResponseController delete(@Valid  @RequestParam("guideID") String guideID){
        System.out.println("Guide delete ok"+guideID);
        return guideService.delete(guideID);
    }

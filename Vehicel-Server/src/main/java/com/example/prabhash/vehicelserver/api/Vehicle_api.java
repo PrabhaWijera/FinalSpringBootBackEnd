@@ -5,6 +5,7 @@ import com.example.prabhash.vehicelserver.dto.Vehicle_dto;
 import com.example.prabhash.vehicelserver.entity.Vehicle_entity;
 import com.example.prabhash.vehicelserver.res.ResponseController;
 import com.example.prabhash.vehicelserver.service.VehicleService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,32 +29,32 @@ public class Vehicle_api {
 
 
     @PostMapping(path = "vSave",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController save(@RequestBody Vehicle_dto vehicleDto){
+    public ResponseController save(@Valid  @RequestBody Vehicle_dto vehicleDto){
         System.out.println("vehicle save working");
        return vehicleService.save(vehicleDto);
     }
 
     @PutMapping(value = "V_put",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController update(@RequestBody Vehicle_dto vehicleDto){
+    public ResponseController update(@Valid @RequestBody Vehicle_dto vehicleDto){
         System.out.println("VehicleDto update working");
         return vehicleService.update(vehicleDto);
     }
 
 
     @DeleteMapping(path = "V_delete",params ="V_ID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController delete(@RequestParam("V_ID") String vehicleID){
+    public ResponseController delete(@Valid @RequestParam("V_ID") String vehicleID){
         return vehicleService.delete(vehicleID);
     }
 
     @GetMapping(path = "V_search",params = "Vehicle_ID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController search(@RequestParam("Vehicle_ID") String Vehicle_ID){
+    public ResponseController search(@Valid @RequestParam("Vehicle_ID") String Vehicle_ID){
         return vehicleService.search(Vehicle_ID);
     }
 
 //for package testing
 
     @PostMapping("/getvehi")
-    public ResponseEntity <String> getAllVehicles(@RequestParam String id) {
+    public ResponseEntity <String> getAllVehicles(@Valid @RequestParam String id) {
         // Return the data as a response
         return ResponseEntity.ok(id);
     }
