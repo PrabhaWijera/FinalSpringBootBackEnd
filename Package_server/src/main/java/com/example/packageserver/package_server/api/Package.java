@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/package_server")
@@ -17,6 +19,7 @@ public class Package {
 
     @Autowired
     private PackageService packageService;
+
 
 
     @GetMapping("/check")
@@ -38,7 +41,7 @@ public class Package {
 
     @DeleteMapping(path = "/P_dlt",params = "P_id",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseController delete(@RequestParam("P_id") String packageId){
-        return packageService.search(packageId);
+        return packageService.delete(packageId);
     }
 
     @GetMapping(path = "/P_search",params = "Package_ID",produces = MediaType.APPLICATION_JSON_VALUE)

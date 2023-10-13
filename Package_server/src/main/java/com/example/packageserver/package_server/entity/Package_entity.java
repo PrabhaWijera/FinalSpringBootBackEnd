@@ -19,6 +19,7 @@ public class Package_entity {
 
     private String hotel_id;
 
+
     private String vehical_id;
 
 

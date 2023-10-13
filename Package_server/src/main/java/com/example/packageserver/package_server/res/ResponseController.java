@@ -10,9 +10,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ResponseController<S> {
-
-
+public class ResponseController {
 
     private int status_code;
     private String message;

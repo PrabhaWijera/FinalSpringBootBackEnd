@@ -12,7 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 @Data
-public class Vehicle_dto implements Serializable,SuperDto {
+public class Vehicle_dto implements Serializable,SuperDto{
 
     private String vehicleID;
 
