@@ -10,9 +10,12 @@ import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,14 +38,11 @@ public class PackageService_impl implements PackageService {
     //Fientclient , Service Discovery we use
 
     @Autowired
-    PackageFiegnInterfaec packageFiegnInterfaec;
+    private PackageFiegnInterfaec packageFiegnInterfaec;
 
-    public String getCheckUser() {
-        String checkUser = packageFiegnInterfaec.getCheckUser();
-        return checkUser;
-    }
 
-   /* public String getCheckUser = packageFiegnInterfaec.getCheckUser(); null nisa comment kala*/
+
+
 
 
     //-------------------------------------------------------
@@ -106,5 +106,22 @@ public class PackageService_impl implements PackageService {
         responseController1.setData(data);
         responseController1.setMessage(message);
         return responseController1;
+    }
+
+
+
+
+    // testing
+    public ResponseEntity<String> createVehicles(@RequestBody String id) {
+        // You should pass the id to your Feign client to retrieve vehicle data
+        List<String> vehicles = Collections.singletonList(packageFiegnInterfaec.getAllVehicles(id).getBody());
+
+        Package_entity packageEntity=new Package_entity();
+        packageEntity.setVehical_id(Collections.singletonList("V0124445"));
+        // Here you can add logic to process the 'vehicles' data
+        packageRepo.save(packageEntity);
+
+        // If creation is successful, return a success response
+        return new ResponseEntity<>("Success", HttpStatus.CREATED);
     }
 }

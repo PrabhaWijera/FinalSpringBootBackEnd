@@ -2,11 +2,15 @@ package com.example.prabhash.vehicelserver.api;
 
 
 import com.example.prabhash.vehicelserver.dto.Vehicle_dto;
+import com.example.prabhash.vehicelserver.entity.Vehicle_entity;
 import com.example.prabhash.vehicelserver.res.ResponseController;
 import com.example.prabhash.vehicelserver.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -44,6 +48,14 @@ public class Vehicle_api {
     @GetMapping(path = "V_search",params = "Vehicle_ID",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseController search(@RequestParam("Vehicle_ID") String Vehicle_ID){
         return vehicleService.search(Vehicle_ID);
+    }
+
+//for package testing
+
+    @PostMapping("/getvehi")
+    public ResponseEntity <String> getAllVehicles(@RequestParam String id) {
+        // Return the data as a response
+        return ResponseEntity.ok(id);
     }
 
 
