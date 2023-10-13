@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.client.RestTemplate;
 
 import java.net.http.HttpClient;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class VehicleService_impl implements VehicleService{
     private ModelMapper modelMapper;
 
     @Autowired
-    private ResponseController responseController;
+    private RestTemplate restTemplate;
 
 
     @Override
