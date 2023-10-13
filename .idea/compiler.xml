@@ -13,6 +13,7 @@
         <module name="Vehicel-Server" />
         <module name="Hotel-Server" />
         <module name="user_server" />
+        <module name="Payment-Server" />
         <module name="Package_server" />
         <module name="Guide-Server" />
       </profile>
@@ -30,6 +31,7 @@
       <module name="Hotel-Server" options="-parameters" />
       <module name="Package-Details-Server" options="-parameters" />
       <module name="Package_server" options="-parameters" />
+      <module name="Payment-Server" options="-parameters" />
       <module name="Service_Registry" options="-parameters" />
       <module name="Vehicel-Server" options="-parameters" />
       <module name="package-server" options="-parameters" />
