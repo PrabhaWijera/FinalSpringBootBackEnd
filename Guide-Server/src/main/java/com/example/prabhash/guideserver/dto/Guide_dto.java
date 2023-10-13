@@ -1,7 +1,17 @@
 package com.example.prabhash.guideserver.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.Serializable;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 public class Guide_dto implements Serializable {
 
     private String guideID;
