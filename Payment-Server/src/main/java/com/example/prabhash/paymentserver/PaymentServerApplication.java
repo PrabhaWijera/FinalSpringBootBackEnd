@@ -11,7 +11,9 @@ import org.springframework.context.annotation.Bean;
 public class PaymentServerApplication {
 
     public static void main(String[] args) {
+        System.out.println("PAYMENT-SERVER-START");
         SpringApplication.run(PaymentServerApplication.class, args);
+        System.out.println("PAYMENT-SERVER-START");
     }
 
 
