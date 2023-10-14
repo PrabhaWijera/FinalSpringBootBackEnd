@@ -41,7 +41,7 @@ public class PackageDetails_impl implements PackageDetailsService {
 
     @Override
     public ResponseController save(PackageDetails_dto packageDetailsDto) {
-        if (search(packageDetailsDto.getPackageDetailsID()).getData()==null){
+        if (search(String.valueOf(packageDetailsDto.getPackageID())).getData()==null){
             packageDetails_repo.save(modelMapper.map(packageDetailsDto,PackageDetail_entity.class));
             return createResponse(HttpStatus.OK.value(), null,"Sucess");
         }
@@ -50,7 +50,7 @@ public class PackageDetails_impl implements PackageDetailsService {
 
     @Override
     public ResponseController update(PackageDetails_dto packageDetailsDto) {
-        if (search(packageDetailsDto.getPackageDetailsID()).getData()!=null){
+        if (search(String.valueOf(packageDetailsDto.getPackageID())).getData()!=null){
             packageDetails_repo.save(modelMapper.map(packageDetailsDto,PackageDetail_entity.class));
             return createResponse(HttpStatus.OK.value(), null,"success");
         }

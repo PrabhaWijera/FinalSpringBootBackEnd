@@ -12,32 +12,24 @@ import java.io.Serializable;
 @Builder
 public class PackageDetails_dto implements Serializable {
 
-
-    private String PackageDetailsID;
-
-
-    private String travelTimeDuration;
-
-    private String travelArea;
-
-    private int NoAdult;
-
-    private int NoChild;
-
-    private int totalHeadCount;
+    private String packageID;
 
     private String packageCategory;
 
-    private String petAllowed;
-
-    private String needGuide;
-
-    private double packageValue;
-
-    private  double paidValue;
-
+    private String travelDuration;
+    private String travelArea;
     private String remark;
-
+    private int noOfAdults;
+    private int noOfChildren;
+    private int totalHeadCount;
+    private boolean isPetsAllowed;
+    private boolean isGuideNeeded;
+    private double packageValue;
+    private double packagePaidValue;
+    private int hotelID;
+    private int vehicleID;
+    private int userID;
+    private int guideID;
 
 
 }

@@ -20,8 +20,8 @@ public class Package_entity {
     @Id
     private String package_id;
 
-
-    private String hotel_id;
+    @ElementCollection
+    private List<String> hotel_id;
 
     @ElementCollection//we cant use many to one
     private List<String> vehical_id;

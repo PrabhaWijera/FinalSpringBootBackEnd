@@ -13,8 +13,5 @@ public class PackageDetailsServerApplication {
         System.out.println("PACKAGE-DETAILS-SERVER IS RUNNING!!!");
     }
 
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
+
 }

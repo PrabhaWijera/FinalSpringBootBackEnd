@@ -16,8 +16,5 @@ public class PackageServerApplication {
     }
 
 
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
+
 }

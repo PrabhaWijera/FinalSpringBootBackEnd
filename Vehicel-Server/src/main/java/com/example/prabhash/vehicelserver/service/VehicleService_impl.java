@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,6 +20,7 @@ import java.util.Optional;
 
 
 @Service
+@Transactional
 public class VehicleService_impl implements VehicleService{
 
     @Autowired
@@ -26,12 +28,6 @@ public class VehicleService_impl implements VehicleService{
 
     @Autowired
     private ModelMapper modelMapper;
-
-    @Autowired
-    private RestTemplate restTemplate;
-
-
-
 
 
 

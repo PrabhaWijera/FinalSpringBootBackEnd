@@ -2,6 +2,7 @@ package com.example.user_server.user.config;
 
 
 import com.example.user_server.user.service.custom.UserDetailsServiceImpl;
+import feign.RequestInterceptor;
 import jakarta.persistence.Access;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,11 @@ public class ApplicationConfig {
     return new BCryptPasswordEncoder();
   }
 
+  @Bean
+  public RequestInterceptor requestInterceptor(){
+  return requestInterceptor ->
+  requestInterceptor.header("Name","requestInterceptor");
+  }
 
 
 }
