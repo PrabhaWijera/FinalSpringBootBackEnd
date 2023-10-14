@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.awt.*;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/hotel_api")
 @RestController
 public class Hotel_api {

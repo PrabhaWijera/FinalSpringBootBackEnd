@@ -12,7 +12,7 @@ import javax.print.attribute.standard.Media;
 
 @RestController
 @RequestMapping("/Payment")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8080")
 public class Payment_api {
 
     @Autowired
