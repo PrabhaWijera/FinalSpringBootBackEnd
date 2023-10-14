@@ -16,14 +16,5 @@ public class VehicelServerApplication {
         System.out.println("Vehicle-SERVER IS RUNNING!!!");
     }
 
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
 
-
-    @Bean
-    public RestTemplate restTemplate(){
-        return new RestTemplate();
-    }
 }

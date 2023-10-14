@@ -16,9 +16,6 @@ public class GuideServerApplication {
         System.out.println("GUIDE-SERVER IS RUNNING!!!");
     }
 
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
+
 
 }

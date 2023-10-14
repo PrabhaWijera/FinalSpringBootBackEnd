@@ -15,9 +15,6 @@ public class HotelServerApplication {
         System.out.println("HOTEL-SERVER IS RUNNING!!!");
     }
 
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
+
 
 }

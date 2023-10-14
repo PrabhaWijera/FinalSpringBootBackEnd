@@ -17,8 +17,4 @@ public class PaymentServerApplication {
     }
 
 
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
 }
