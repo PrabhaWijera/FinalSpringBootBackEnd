@@ -29,6 +29,8 @@ public class Package_entity {
     @ElementCollection
     private List<String> user_id;
 
+    @ElementCollection
+    private List<String> guideID;
 
     private String packageDetails;
 

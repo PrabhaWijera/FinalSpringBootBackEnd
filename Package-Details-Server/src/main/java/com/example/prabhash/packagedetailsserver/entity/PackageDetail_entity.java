@@ -33,6 +33,7 @@ public class PackageDetail_entity {
     private boolean isGuideNeeded;
     private double packageValue;
     private double packagePaidValue;
+
     private int hotelID;
     private int vehicleID;
     private int userID;
