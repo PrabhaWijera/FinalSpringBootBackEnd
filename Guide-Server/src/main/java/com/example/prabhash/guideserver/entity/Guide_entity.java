@@ -43,4 +43,7 @@ public class Guide_entity {
 
 
     private String remark;
+
+    //others
+    private String package_id;
 }
