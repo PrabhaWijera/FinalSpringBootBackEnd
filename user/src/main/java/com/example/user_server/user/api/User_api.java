@@ -17,9 +17,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.Base64;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin
 @RestController
-@RequestMapping("/user_server")
+@RequestMapping("api/v1/userApi")
 public class User_api {
 
     User_api(){

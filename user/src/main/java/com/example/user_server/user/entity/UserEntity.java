@@ -2,6 +2,8 @@ package com.example.user_server.user.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,7 +26,7 @@ public class UserEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String user_id;
 
-
+    @NotBlank
     private String userName;
 
     private String user_nic;
@@ -34,7 +36,7 @@ public class UserEntity implements UserDetails {
     private String gender;
 
     private String age;
-
+    @Email
     private String email;
 
     private String contactNumber;
