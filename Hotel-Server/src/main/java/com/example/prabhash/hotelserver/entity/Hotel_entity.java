@@ -43,4 +43,7 @@ public class Hotel_entity {
     private String criteria;
 
     private String remark;
+
+    //other
+    private String package_id;
 }

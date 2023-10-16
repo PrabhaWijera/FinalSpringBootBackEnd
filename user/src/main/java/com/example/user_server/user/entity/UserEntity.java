@@ -56,6 +56,8 @@ public class UserEntity implements UserDetails {
         return List.of(new SimpleGrantedAuthority(role.name()));
 
     }
+    //others
+    private String package_id;
 
     @Override
     public String getPassword() {

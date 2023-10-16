@@ -26,8 +26,11 @@ public class Package_entity {
     @ElementCollection//we cant use many to one
     private List<String> vehical_id;
 
+    @ElementCollection
+    private List<String> user_id;
 
 
+    private String packageDetails;
 
 
 

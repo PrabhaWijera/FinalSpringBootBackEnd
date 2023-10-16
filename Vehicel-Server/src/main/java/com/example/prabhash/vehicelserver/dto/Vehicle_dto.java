@@ -35,7 +35,7 @@ public class Vehicle_dto implements Serializable,SuperDto{
     private String vehicleFontInteriorImg;
 
     private String vehicleRearInteriorImg;
-
+    private String seatCapacity;
     private String transmissionType;
 
     private String driverName;

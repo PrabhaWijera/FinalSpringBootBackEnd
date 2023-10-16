@@ -40,6 +40,8 @@ public class Vehicle_entity {
 
     private String vehicleRearInteriorImg;
 
+    private String seatCapacity;
+
     private String transmissionType;
     @NotBlank
     private String driverName;
@@ -50,5 +52,6 @@ public class Vehicle_entity {
 
     private String remarks;
 
-    //others
+//other
+    private String package_id;
 }
