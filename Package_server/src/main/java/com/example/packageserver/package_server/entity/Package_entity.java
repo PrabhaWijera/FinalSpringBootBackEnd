@@ -27,7 +27,7 @@ public class Package_entity {
     private List<String> hotel_list;
 
     @ElementCollection//we cant use many to one
-    private List<String> vehical_list;
+    private List<String> Vehical_id;
 
     @ElementCollection
     private List<String> user_list;
@@ -36,7 +36,6 @@ public class Package_entity {
     private List<String> guideID;
 
     private String packageDetails;
-
 
 
 
