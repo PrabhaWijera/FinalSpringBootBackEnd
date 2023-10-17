@@ -1,5 +1,9 @@
 package com.example.prabhash.guideserver.dto;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +18,7 @@ import java.io.Serializable;
 @Builder
 public class Guide_dto implements Serializable {
 
+
     private String guideID;
 
     private String guideName;
@@ -24,14 +29,11 @@ public class Guide_dto implements Serializable {
 
     private String guideGender;
 
-    private String guidePICImage;
+    private String guidePICIMGLocation;
 
-    private String guideNICFrontIMG;
+    private String guideNICIMGLocation;
 
-    private String guideNICRearIMG;
-
-    private String guideIDscannedFrontIMG;
-    private String guideIDscannedRearIMG;
+    private String guideIDIMGLocation;
 
     private String guideExperience;
 

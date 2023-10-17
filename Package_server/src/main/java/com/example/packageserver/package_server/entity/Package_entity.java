@@ -20,14 +20,17 @@ public class Package_entity {
     @Id
     private String package_id;
 
+    private String packageCategory;
+
+
     @ElementCollection
-    private List<String> hotel_id;
+    private List<String> hotel_list;
 
     @ElementCollection//we cant use many to one
-    private List<String> vehical_id;
+    private List<String> vehical_list;
 
     @ElementCollection
-    private List<String> user_id;
+    private List<String> user_list;
 
     @ElementCollection
     private List<String> guideID;

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,9 +18,13 @@ public class Package_dto implements Serializable,Super_dto{
 
     private String package_id;
 
-    private String hotel_id;
+    private String  vehical_list;
 
-    private String vehical_id;
+    private String hotel_list;
 
+    private String user_list;
 
+    private String guideID;
+
+    private String packageCategory;
 }

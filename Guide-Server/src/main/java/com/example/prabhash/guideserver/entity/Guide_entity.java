@@ -27,15 +27,11 @@ public class Guide_entity {
     @NotBlank
     private String guideGender;
     @NotBlank
-    private String guidePICImage;
+    private String guidePICIMGLocation;
     @NotBlank
-    private String guideNICFrontIMG;
+    private String guideNICIMGLocation;
     @NotBlank
-    private String guideNICRearIMG;
-    @NotBlank
-    private String guideIDscannedFrontIMG;
-    @NotBlank
-    private String guideIDscannedRearIMG;
+    private String guideIDIMGLocation;
 
     private String guideExperience;
 
