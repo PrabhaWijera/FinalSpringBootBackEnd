@@ -26,16 +26,15 @@ public class Vehicle_dto implements Serializable,SuperDto{
 
     private String fuelUsage;
 
-    private String vehicleFontImg;
+    private String vehicleImg;
 
-    private String vehicleRearImg;
 
-    private String vehicleSideImg;
+    private String vehicleInteriorImg;
 
-    private String vehicleFontInteriorImg;
 
-    private String vehicleRearInteriorImg;
+
     private String seatCapacity;
+
     private String transmissionType;
 
     private String driverName;

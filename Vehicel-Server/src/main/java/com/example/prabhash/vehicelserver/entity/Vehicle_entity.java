@@ -30,15 +30,9 @@ public class Vehicle_entity {
 
     private String fuelUsage;
     @NotBlank
-    private String vehicleFontImg;
-    @NotBlank
-    private String vehicleRearImg;
-    @NotBlank
-    private String vehicleSideImg;
+    private String vehicleImg;
 
-    private String vehicleFontInteriorImg;
-
-    private String vehicleRearInteriorImg;
+    private String vehicleInteriorImg;
 
     private String seatCapacity;
 

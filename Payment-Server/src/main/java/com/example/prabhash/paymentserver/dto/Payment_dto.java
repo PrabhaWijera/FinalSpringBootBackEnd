@@ -15,6 +15,6 @@ public class Payment_dto implements Serializable {
     private int DailyIncome;
     private int AnnualIncome;
     private int MonthlyIncome;
-    private int WeeklyIncome;
+    private int c;
 
 }

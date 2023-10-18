@@ -31,7 +31,7 @@ public class Hotel_dto implements Serializable,SuperDto {
 
     private String contactNumber01;
 
-    private String getContactNumber02;
+    private String ContactNumber02;
 
     private boolean petsStatus;
     //Pets allowed or not
