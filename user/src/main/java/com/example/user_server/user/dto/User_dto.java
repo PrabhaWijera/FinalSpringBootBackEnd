@@ -33,7 +33,10 @@ public class User_dto implements Serializable ,SuperDto {
 
     private String userNic_Photo;
 
-    private Role role;
+    private Role role;//string d dnne
+
+    private boolean isAuthenticated;
+
 
 /*
     private String userNic_Photo;*/

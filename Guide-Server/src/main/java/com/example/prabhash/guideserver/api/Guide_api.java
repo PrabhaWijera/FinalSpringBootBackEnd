@@ -19,8 +19,8 @@ public class Guide_api {
 
 
 
-   @PostMapping(path = "Gsave",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController save(@Valid @RequestBody Guide_dto guideDto){
+   @PostMapping(path = "/Gsave",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseController saveGuide( @RequestBody Guide_dto guideDto){
        System.out.println("Guide save"+guideDto.toString());
        return guideService.save(guideDto);
 

@@ -30,6 +30,7 @@ public class Guide_dto implements Serializable {
     private String guideNICRearIMG;
 
     private String guideIDscannedFrontIMG;
+
     private String guideIDscannedRearIMG;
 
     private String guideExperience;
@@ -38,12 +39,5 @@ public class Guide_dto implements Serializable {
 
 
     private String remark;
-
-
-
-
-
-
-
 
 }

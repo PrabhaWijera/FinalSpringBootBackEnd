@@ -38,7 +38,10 @@ public class User_api {
 
 //---------------------
 
-
+    @GetMapping(path = "/getUserByUserName",produces = MediaType.APPLICATION_JSON_VALUE,params = {"username","password"})
+    public ResponseController getUserByUserName(@RequestParam("username") String username,@RequestParam("password") String password){
+        return userService.getUserByUserName(username,password);
+    }
 
 //this goes to package
     @GetMapping( "/check")
@@ -82,6 +85,7 @@ public class User_api {
     public ResponseController delete(@RequestParam ("userID") String userId){
         return userService.search(userId);
     }
+
 
     @GetMapping(path = "/Usearch",params = "UserID",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseController search(@RequestParam ("UserID") String userID){

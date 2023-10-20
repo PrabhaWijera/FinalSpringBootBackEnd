@@ -14,6 +14,7 @@
         <option value="$PROJECT_DIR$/Package-Details-Server/pom.xml" />
         <option value="$PROJECT_DIR$/Guide-Server/pom.xml" />
         <option value="$PROJECT_DIR$/Payment-Server/pom.xml" />
+        <option value="$PROJECT_DIR$/UploadServer/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

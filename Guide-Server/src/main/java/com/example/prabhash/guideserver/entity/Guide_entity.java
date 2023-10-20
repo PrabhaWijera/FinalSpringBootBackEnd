@@ -18,19 +18,19 @@ public class Guide_entity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String guideID;
-    @NotBlank
+
     private String guideName;
-    @NotBlank
+
     private String guideAddress;
-    @NotBlank
+
     private String guideAge;
-    @NotBlank
+
     private String guideGender;
-    @NotBlank
+
     private String guidePICIMGLocation;
-    @NotBlank
+
     private String guideNICIMGLocation;
-    @NotBlank
+
     private String guideIDIMGLocation;
 
     private String guideExperience;

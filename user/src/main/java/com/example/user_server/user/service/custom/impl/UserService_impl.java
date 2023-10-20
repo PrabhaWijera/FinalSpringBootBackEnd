@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.*;
 
@@ -125,5 +126,18 @@ public class UserService_impl implements UserService {
     }
 
 
+    @Override
+    public String handleUpload(MultipartFile imgfile) {
+        return null;
+    }
 
+    @Override
+    public ResponseController getUserByUserName(String username, String password) {
+        return null;
+    }
+
+    @Override
+    public Boolean passwordValidaor(String password, String hanshedPassword) {
+        return null;
+    }
 }

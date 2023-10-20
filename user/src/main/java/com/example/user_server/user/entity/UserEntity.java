@@ -26,7 +26,7 @@ public class UserEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String user_id;
 
-    @NotBlank
+
     private String userName;
 
     private String user_nic;
@@ -49,6 +49,8 @@ public class UserEntity implements UserDetails {
 
     @Enumerated
     private Role role;
+
+    private boolean isAuthenticated;
 
 
     @Override

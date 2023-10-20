@@ -21,7 +21,7 @@ public class Guide_api {
    @PostMapping(path = "Gsave",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseController save( @RequestBody Guide_dto guideDto){
        System.out.println("Guide save"+guideDto.toString());
-       return guideAuthfiegnInterface.save(guideDto);
+       return guideAuthfiegnInterface.saveGuide(guideDto);
 
    }
 
@@ -34,7 +34,7 @@ public class Guide_api {
    @PutMapping(path = "Gput",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
    public ResponseController update(  @RequestBody Guide_dto guideDto){
        System.out.println("update guide"+guideDto.toString());
-       return guideAuthfiegnInterface.save(guideDto);
+       return guideAuthfiegnInterface.saveGuide(guideDto);
    }
 
    @DeleteMapping(path = "Gdelete",params = "guideID",produces = MediaType.APPLICATION_JSON_VALUE)

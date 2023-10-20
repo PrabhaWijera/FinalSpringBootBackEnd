@@ -5,4 +5,11 @@ import org.springframework.cloud.openfeign.FeignClient;
 @FeignClient("VEHICLE-SERVER")
 public interface VehicleInterface {
 
+
+
+
+
+
+
+
 }
