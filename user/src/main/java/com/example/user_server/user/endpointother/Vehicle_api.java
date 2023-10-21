@@ -1,70 +1,59 @@
-package com.example.prabhash.vehicelserver.api;
+package com.example.user_server.user.endpointother;
 
-
-import com.example.prabhash.vehicelserver.dto.Vehicle_dto;
-import com.example.prabhash.vehicelserver.entity.Vehicle_entity;
-import com.example.prabhash.vehicelserver.res.ResponseController;
-import com.example.prabhash.vehicelserver.service.VehicleService;
+import com.example.user_server.user.dto.Vehicle_dto;
+import com.example.user_server.user.fiegn.VehicleAuthFiegnInterface;
+import com.example.user_server.user.res.ResponseController;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
 @CrossOrigin
+@RequestMapping("api/v1/vehicle_api")
 @RestController
-@RequestMapping
 public class Vehicle_api {
 
+
     @Autowired
-    private VehicleService vehicleService;
+    private VehicleAuthFiegnInterface vehicleAuthFiegnInterface;
 
 
     @GetMapping("/check")
     public String getCheck_vehicle(){
-        return "Vehicle API run";
+        return "Vehicle API run in user";
     }
 
 
     @PostMapping(path = "vSave",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController save(@Valid  @RequestBody Vehicle_dto vehicleDto){
+    public ResponseController save(@Valid @RequestBody Vehicle_dto vehicleDto){
         System.out.println("vehicle save working");
-       return vehicleService.save(vehicleDto);
+        return vehicleAuthFiegnInterface.save(vehicleDto);
     }
 
     @PutMapping(value = "V_put",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseController update(@Valid @RequestBody Vehicle_dto vehicleDto){
         System.out.println("VehicleDto update working");
-        return vehicleService.update(vehicleDto);
+        return vehicleAuthFiegnInterface.update(vehicleDto);
     }
 
 
     @DeleteMapping(path = "V_delete",params ="V_ID",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseController delete(@Valid @RequestParam("V_ID") String vehicleID){
-        return vehicleService.delete(vehicleID);
+        return vehicleAuthFiegnInterface.delete(vehicleID);
     }
 
     @GetMapping(path = "V_search",params = "Vehicle_ID",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseController search(@Valid @RequestParam("Vehicle_ID") String Vehicle_ID){
-        return vehicleService.search(Vehicle_ID);
+        return vehicleAuthFiegnInterface.search(Vehicle_ID);
     }
 
 //for package testing
 
     @PostMapping("/getvehi")
-    public ResponseEntity <String> getAllVehicles(@Valid @RequestParam String id) {
+    public ResponseEntity<String> getAllVehicles(@Valid @RequestParam String id) {
         // Return the data as a response
         return ResponseEntity.ok(id);
     }
-
-
-
-
-
-
-
 
 
 
