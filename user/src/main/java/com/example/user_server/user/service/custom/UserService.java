@@ -12,8 +12,10 @@ public interface UserService extends SuperService<User_dto,String> {
 
    String handleUpload(MultipartFile imgfile);
 
-   ResponseController getUserByUserName(String username,String password);
+   ResponseController getUserByUserName(String useremail,String password);
 
    Boolean passwordValidaor(String password,String hanshedPassword);
+   ResponseController createandSendResponed(int statuscode,String message,Object data);
+
 
 }

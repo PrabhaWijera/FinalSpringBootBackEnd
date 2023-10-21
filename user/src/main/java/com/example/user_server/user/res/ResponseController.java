@@ -16,4 +16,5 @@ public class ResponseController {
     private String message;
 
     private Object data;
+
 }

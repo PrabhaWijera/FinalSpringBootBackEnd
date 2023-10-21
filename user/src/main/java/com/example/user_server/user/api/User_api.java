@@ -38,9 +38,10 @@ public class User_api {
 
 //---------------------
 
-    @GetMapping(path = "/getUserByUserName",produces = MediaType.APPLICATION_JSON_VALUE,params = {"username","password"})
-    public ResponseController getUserByUserName(@RequestParam("username") String username,@RequestParam("password") String password){
-        return userService.getUserByUserName(username,password);
+    @GetMapping(path = "/getUserByUserName",produces = MediaType.APPLICATION_JSON_VALUE,params = {"useremail","password"})
+    public ResponseController getUserByUserName(@RequestParam("useremail") String useremail,@RequestParam("password") String password){
+        System.out.println("hit by froond end req");
+        return userService.getUserByUserName(useremail,password);
     }
 
 //this goes to package

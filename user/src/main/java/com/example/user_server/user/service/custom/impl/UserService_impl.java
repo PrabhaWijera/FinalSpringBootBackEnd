@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,8 +37,8 @@ public class UserService_impl implements UserService {
     private ResponseController responseController;
 
 
-
-
+@Autowired
+private PasswordEncoder passwordEncoder;
 
 
 
@@ -133,11 +134,30 @@ public class UserService_impl implements UserService {
 
     @Override
     public ResponseController getUserByUserName(String username, String password) {
-        return null;
+        Optional<UserEntity> user = userRepo.findByUserName(username);
+        if (user.isPresent()){
+            String hashPass=user.get().getUser_password();
+            if (passwordValidaor(password,hashPass)){
+                User_dto userDto = modelMapper.map(user.get(), User_dto.class);
+                userDto.setAuthenticated(true);
+                return createandSendResponed(200,"user suck",userDto);
+            }
+        }
+        return createandSendResponed(403,"user not suck",null);
     }
 
     @Override
     public Boolean passwordValidaor(String password, String hanshedPassword) {
-        return null;
+      return passwordEncoder.matches(password,hanshedPassword);
     }
+
+    @Override
+    public ResponseController createandSendResponed(int statuscode, String message, Object data) {
+       responseController.setStateCode(statuscode);
+       responseController.setMessage(message);
+       responseController.setData(data);
+       return responseController;
+    }
+
+
 }

@@ -15,5 +15,40 @@
       <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBGuide</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="springboot_assigmentFinalPackageDBHotel@localhost" uuid="d657b788-49a3-473d-adb2-b511b1412cf6">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBHotel</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="springboot_assigmentFinalPackageDB_packageDetails@localhost" uuid="af09e251-47a6-4686-a797-eb8d4f108c43">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDB_packageDetails</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="springboot_assigmentFinalPackageDBpackage@localhost" uuid="cbf6fdba-d786-4e64-a700-500ee27d055e">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBpackage</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="springboot_assigmentFinalPackageDBPayment@localhost" uuid="97083fa4-0293-48a0-9c88-bdad7b91ca6a">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBPayment</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="springboot_assigmentFinalPackageDBVehicle@localhost" uuid="2d2e1267-9738-48c3-9495-b596e0d779d5">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBVehicle</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
