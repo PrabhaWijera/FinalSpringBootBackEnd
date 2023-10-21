@@ -19,7 +19,7 @@ public class Vehicle_entity {
     @GeneratedValue(strategy = GenerationType.UUID)
 
     private String vehicleID;
-    @NotBlank
+
     private String vehicleBrand;
 
     private String vehicleCategory;
@@ -29,7 +29,7 @@ public class Vehicle_entity {
     private String hybrid;
 
     private String fuelUsage;
-    @NotBlank
+
     private String vehicleImg;
 
     private String vehicleInteriorImg;
@@ -37,11 +37,11 @@ public class Vehicle_entity {
     private String seatCapacity;
 
     private String transmissionType;
-    @NotBlank
+
     private String driverName;
-    @NotBlank
+
     private String conNumber;
-    @NotBlank
+
     private String driverlicenseImg;
 
     private String remarks;
