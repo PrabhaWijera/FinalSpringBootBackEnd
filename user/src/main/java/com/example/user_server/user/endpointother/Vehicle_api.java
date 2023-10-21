@@ -18,20 +18,21 @@ public class Vehicle_api {
     private VehicleAuthFiegnInterface vehicleAuthFiegnInterface;
 
 
+
     @GetMapping("/check")
     public String getCheck_vehicle(){
-        return "Vehicle API run in user";
+        return "Vehicle API run";
     }
 
 
     @PostMapping(path = "vSave",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController save(@Valid @RequestBody Vehicle_dto vehicleDto){
+    public ResponseController save(@Valid  @RequestBody Vehicle_dto vehicleDto){
         System.out.println("vehicle save working");
         return vehicleAuthFiegnInterface.save(vehicleDto);
     }
 
-    @PutMapping(value = "V_put",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController update(@Valid @RequestBody Vehicle_dto vehicleDto){
+    @PutMapping(path = "/Vput",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseController update(@RequestBody Vehicle_dto vehicleDto){
         System.out.println("VehicleDto update working");
         return vehicleAuthFiegnInterface.update(vehicleDto);
     }
@@ -44,13 +45,13 @@ public class Vehicle_api {
 
     @GetMapping(path = "V_search",params = "Vehicle_ID",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseController search(@Valid @RequestParam("Vehicle_ID") String Vehicle_ID){
-        return vehicleAuthFiegnInterface.search(Vehicle_ID);
+        return  vehicleAuthFiegnInterface.search(Vehicle_ID);
     }
 
 //for package testing
 
     @PostMapping("/getvehi")
-    public ResponseEntity<String> getAllVehicles(@Valid @RequestParam String id) {
+    public ResponseEntity <String> getAllVehicles(@Valid @RequestParam String id) {
         // Return the data as a response
         return ResponseEntity.ok(id);
     }

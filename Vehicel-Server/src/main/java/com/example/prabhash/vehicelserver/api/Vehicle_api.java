@@ -34,8 +34,8 @@ public class Vehicle_api {
        return vehicleService.save(vehicleDto);
     }
 
-    @PutMapping(value = "V_put",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController update(@Valid @RequestBody Vehicle_dto vehicleDto){
+    @PutMapping(path = "/Vput",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseController update( @RequestBody Vehicle_dto vehicleDto){
         System.out.println("VehicleDto update working");
         return vehicleService.update(vehicleDto);
     }
