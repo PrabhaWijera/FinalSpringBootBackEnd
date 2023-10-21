@@ -84,7 +84,7 @@ public ResponseController update(Vehicle_dto vehicleDto) {
     }
     throw new RuntimeException("Vehicle not updated");
 }*/
-    @Override
+/*    @Override
     public ResponseController update(Vehicle_dto vehicleDto) {
     Optional<Vehicle_entity> vehicleEntity = vehicleRepo.findById(vehicleDto.getVehicleID());
     if (vehicleEntity.isPresent()) {
@@ -96,7 +96,42 @@ public ResponseController update(Vehicle_dto vehicleDto) {
         vehicleRepo.save(modelMapper.map(vehicleDto, Vehicle_entity.class));
         return createResponse(HttpStatus.OK.value(), null, "Success");
     }
-}
+}*/
+/*    @Override
+public ResponseController update(Vehicle_dto vehicleDto) {
+    Optional<Vehicle_entity> existingVehicle = vehicleRepo.findById(vehicleDto.getVehicleID());
+    if (existingVehicle.isPresent()) {
+        // The vehicle with the given ID exists, so update it
+        Vehicle_entity updatedEntity = modelMapper.map(vehicleDto, Vehicle_entity.class);
+        updatedEntity.setVehicleID(vehicleDto.getVehicleID()); // Set the ID to ensure an update
+        vehicleRepo.save(updatedEntity);
+        return createResponse(HttpStatus.OK.value(), null, "Vehicle updated successfully");
+    } else {
+        // The vehicle with the given ID does not exist, so you can choose how to handle this
+        // For this example, I'm returning a not found response, but you can customize it
+        return createResponse(HttpStatus.NOT_FOUND.value(), null, "Vehicle not found");
+    }
+}*/
+
+    @Override
+    public ResponseController update(Vehicle_dto vehicleDto) {
+        Optional<Vehicle_entity> existingVehicle = vehicleRepo.findById(vehicleDto.getVehicleID());
+
+        if (existingVehicle.isPresent()) {
+            // The vehicle with the given ID exists, so update it
+            Vehicle_entity updatedEntity = modelMapper.map(vehicleDto, Vehicle_entity.class);
+            updatedEntity.setVehicleID(vehicleDto.getVehicleID()); // Set the ID to ensure an update
+            vehicleRepo.save(updatedEntity);
+            return createResponse(HttpStatus.OK.value(), null, "Vehicle updated successfully");
+        } else {
+            // The vehicle with the given ID does not exist, so create a new entry
+            Vehicle_entity newEntity = modelMapper.map(vehicleDto, Vehicle_entity.class);
+            vehicleRepo.save(newEntity);
+            return createResponse(HttpStatus.OK.value(), null, "Vehicle created successfully");
+        }
+    }
+
+
     @Override
     public ResponseController delete(String id) {
         if(search(id).getData()!=null){
