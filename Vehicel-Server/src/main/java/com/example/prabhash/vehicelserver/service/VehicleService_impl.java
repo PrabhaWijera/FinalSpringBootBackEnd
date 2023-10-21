@@ -49,15 +49,54 @@ public class VehicleService_impl implements VehicleService{
         throw new RuntimeException("Vehicale save not ok");
     }
 
-    @Override
+/*    @Override
     public ResponseController update(Vehicle_dto vehicleDto) {
-       if (search(vehicleDto.getVehicleID()).getData()!=null){
+       if (search(vehicleDto.getVehicleID()).getData() !=null){
            vehicleRepo.save(modelMapper.map(vehicleDto,Vehicle_entity.class));
            return createResponse(HttpStatus.OK.value(),null,"Success");
        }
        throw new RuntimeException("vehcle not update");
+    }*/
+/*    @Override
+    public ResponseController update(Vehicle_dto vehicleDto) {
+    if (search(vehicleDto.getVehicleID()).getData() ==null){
+        Optional<Vehicle_entity>vehicleEntity=vehicleRepo.findById(vehicleDto.getVehicleID());
+        if (vehicleEntity.isPresent()){
+            vehicleRepo.save(modelMapper.map(vehicleDto,Vehicle_entity.class));
+            return createResponse(HttpStatus.OK.value(),null,"Success");
+        }else {
+            return createResponse(HttpStatus.OK.value(),null,"no hell no   ");
+        }
     }
-
+    throw new RuntimeException("vehcle not update");
+}*/
+/*@Override
+public ResponseController update(Vehicle_dto vehicleDto) {
+    ResponseController searchResult = search(vehicleDto.getVehicleID());
+    if (searchResult.getData() == null) {
+        Optional<Vehicle_entity> vehicleEntity = vehicleRepo.findById(vehicleDto.getVehicleID());
+        if (vehicleEntity.isPresent()) {
+            vehicleRepo.save(modelMapper.map(vehicleDto, Vehicle_entity.class));
+            return createResponse(HttpStatus.OK.value(), null, "Success");
+        } else {
+            return createResponse(HttpStatus.NOT_FOUND.value(), null, "Vehicle not found");
+        }
+    }
+    throw new RuntimeException("Vehicle not updated");
+}*/
+    @Override
+    public ResponseController update(Vehicle_dto vehicleDto) {
+    Optional<Vehicle_entity> vehicleEntity = vehicleRepo.findById(vehicleDto.getVehicleID());
+    if (vehicleEntity.isPresent()) {
+        // If the vehicle exists, update it
+        vehicleRepo.save(modelMapper.map(vehicleDto, Vehicle_entity.class));
+        return createResponse(HttpStatus.OK.value(), null, "Success");
+    } else {
+        // If the vehicle doesn't exist, create a new entry
+        vehicleRepo.save(modelMapper.map(vehicleDto, Vehicle_entity.class));
+        return createResponse(HttpStatus.OK.value(), null, "Success");
+    }
+}
     @Override
     public ResponseController delete(String id) {
         if(search(id).getData()!=null){

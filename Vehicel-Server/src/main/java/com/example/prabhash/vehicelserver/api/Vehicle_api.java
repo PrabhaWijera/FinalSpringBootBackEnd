@@ -36,7 +36,8 @@ public class Vehicle_api {
 
     @PutMapping(path = "/Vput",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseController update( @RequestBody Vehicle_dto vehicleDto){
-        System.out.println("VehicleDto update working");
+        System.out.println("VehicleDto update working in vehicle");
+        System.out.println(vehicleDto.toString());
         return vehicleService.update(vehicleDto);
     }
 
