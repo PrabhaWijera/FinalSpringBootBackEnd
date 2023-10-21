@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.awt.*;
 
-@CrossOrigin(origins = "http://localhost:8080")
-@RequestMapping("/hotel_api")
+@CrossOrigin
+@RequestMapping
 @RestController
 public class Hotel_api {
 
