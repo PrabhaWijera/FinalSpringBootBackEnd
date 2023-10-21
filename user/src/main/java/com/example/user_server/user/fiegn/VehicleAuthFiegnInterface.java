@@ -25,10 +25,10 @@ public interface VehicleAuthFiegnInterface {
     @PutMapping(path = "/Vput",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseController update( @RequestBody Vehicle_dto vehicleDto);
 
-    @DeleteMapping(path = "V_delete",params ="V_ID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController delete(@Valid @RequestParam("V_ID") String vehicleID);
+    @DeleteMapping(path = "V_delete",params ="Vehicle_ID",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseController delete( @RequestParam("Vehicle_ID") String vehicleID);
     @GetMapping(path = "V_search",params = "Vehicle_ID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController search(@Valid @RequestParam("Vehicle_ID") String Vehicle_ID);
+    public ResponseController search( @RequestParam("Vehicle_ID") String Vehicle_ID);
 
 //for package testing
 

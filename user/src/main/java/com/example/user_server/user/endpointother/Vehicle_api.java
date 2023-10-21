@@ -39,20 +39,20 @@ public class Vehicle_api {
     }
 
 
-    @DeleteMapping(path = "V_delete",params ="V_ID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController delete(@Valid @RequestParam("V_ID") String vehicleID){
+    @DeleteMapping(path = "V_delete",params ="Vehicle_ID",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseController delete( @RequestParam("Vehicle_ID") String vehicleID){
         return vehicleAuthFiegnInterface.delete(vehicleID);
     }
 
     @GetMapping(path = "V_search",params = "Vehicle_ID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController search(@Valid @RequestParam("Vehicle_ID") String Vehicle_ID){
+    public ResponseController search( @RequestParam("Vehicle_ID") String Vehicle_ID){
         return  vehicleAuthFiegnInterface.search(Vehicle_ID);
     }
 
 //for package testing
 
     @PostMapping("/getvehi")
-    public ResponseEntity <String> getAllVehicles(@Valid @RequestParam String id) {
+    public ResponseEntity <String> getAllVehicles( @RequestParam String id) {
         // Return the data as a response
         return ResponseEntity.ok(id);
     }
