@@ -33,18 +33,18 @@ public class Hotel_api {
     }
 
     @PutMapping(path = "h_put",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController update(@RequestBody Hotel_dto hotelDto){
+    public ResponseController update(@Valid @RequestBody Hotel_dto hotelDto){
         System.out.println("Hotel update working");
         return hotelAuthfiegnInterface.update(hotelDto);
     }
 
-    @DeleteMapping(path = "H_ID",params = "H_ID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController delete(@RequestParam("H_ID") String H_ID){
+    @DeleteMapping(path = "H_Delete",params = "H_ID",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseController delete(@Valid @RequestParam("H_ID") String H_ID){
         return hotelAuthfiegnInterface.delete(H_ID);
     }
 
     @GetMapping(path = "H_search",params = "H_ID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController search(@RequestParam("H_ID") String H_ID){
+    public ResponseController search(@Valid @RequestParam("H_ID") String H_ID){
         return hotelAuthfiegnInterface.search(H_ID);
     }
 

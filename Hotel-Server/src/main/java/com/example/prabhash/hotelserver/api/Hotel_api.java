@@ -26,24 +26,24 @@ public class Hotel_api {
 
 
     @PostMapping(path = "h_save",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController save(@Valid @RequestBody Hotel_dto hotelDto){
+    public ResponseController save( @RequestBody Hotel_dto hotelDto){
         System.out.println("Hotel save working");
         return hotelService.save(hotelDto);
     }
 
     @PutMapping(path = "h_put",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController update(@Valid @RequestBody Hotel_dto hotelDto){
+    public ResponseController update( @RequestBody Hotel_dto hotelDto){
         System.out.println("Hotel update working");
         return hotelService.update(hotelDto);
     }
 
-    @DeleteMapping(path = "H_ID",params = "H_ID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController delete(@Valid @RequestParam("H_ID") String H_ID){
+    @DeleteMapping(path = "H_Delete",params = "H_ID",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseController delete( @RequestParam("H_ID") String H_ID){
         return hotelService.delete(H_ID);
     }
 
     @GetMapping(path = "H_search",params = "H_ID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController search(@Valid @RequestParam("H_ID") String H_ID){
+    public ResponseController search( @RequestParam("H_ID") String H_ID){
         return hotelService.search(H_ID);
     }
 
