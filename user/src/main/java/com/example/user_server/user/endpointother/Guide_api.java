@@ -28,7 +28,7 @@ public class Guide_api {
    @GetMapping(path = "Gget",params = "guideID",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseController get(@RequestParam("guideID") String guideID){
        System.out.println("Guide search"+guideID);
-     return guideAuthfiegnInterface.search(guideID);
+     return guideAuthfiegnInterface.get(guideID);
    }
 
    @PutMapping(path = "Gput",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)

@@ -4,6 +4,7 @@ import com.example.user_server.user.dto.Guide_dto;
 import com.example.user_server.user.fiegn.GuideAuthfiegnInterface;
 import com.example.user_server.user.res.ResponseController;
 import jakarta.persistence.Access;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,26 @@ public class GuideController {
     public ResponseController saveGuide(@RequestBody Guide_dto guideDto){
         return guideAuthfiegnInterface.saveGuide(guideDto);
     }
+
+
+    @GetMapping(path = "Gget",params = "guideID",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseController get( @RequestParam("guideID") String guideID){
+        System.out.println("Guide search"+guideID);
+        return guideAuthfiegnInterface.get(guideID);
+    }
+
+    @PutMapping(path = "Gput",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseController update( @RequestBody Guide_dto guideDto){
+        System.out.println("update guide"+guideDto.toString());
+        return guideAuthfiegnInterface.update(guideDto);
+    }
+
+    @DeleteMapping(path = "Gdelete",params = "guideID",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseController delete(  @RequestParam("guideID") String guideID){
+        System.out.println("Guide delete ok"+guideID);
+        return guideAuthfiegnInterface.delete(guideID);
+    }
+
 
 
 

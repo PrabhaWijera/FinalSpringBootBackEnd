@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableFeignClients
-public class UserApplication {
+public class  UserApplication {
 
 
 	public static void main(String[] args) {
