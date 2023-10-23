@@ -1,17 +1,18 @@
 package com.example.packageserver.package_server.service;
 
 import com.example.packageserver.package_server.dto.Super_dto;
-import com.example.packageserver.package_server.res.ResponseController;
+import com.example.packageserver.package_server.res.Response;
+import org.springframework.http.ResponseEntity;
 
 public interface SuperService <T extends Super_dto,ID>{
-    ResponseController search(String id);
+    ResponseEntity<Response>  search(String id);
 
-    ResponseController save(T t);
+    ResponseEntity<Response>  save(T t);
 
-    ResponseController  update(T t);
+    ResponseEntity<Response>   update(T t);
 
-    ResponseController  delete(String id);
+    ResponseEntity<Response>   delete(String id);
 
-    ResponseController  getAll();
-    ResponseController  createResponse(int statusCode, Object data, String message);
+    ResponseEntity<Response>   getAll();
+    ResponseEntity<Response> createAndSendResponse(int statusCode, String msg, Object data);
 }

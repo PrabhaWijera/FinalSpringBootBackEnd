@@ -1,14 +1,10 @@
 package com.example.packageserver.package_server.fign;
 
 
-import com.example.packageserver.package_server.res.ResponseController;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @FeignClient("VEHICLE-SERVER")
 //step-1 -> annotated the fiegn and tag in which services we need-and all letters are Capitals(eureka eke display wela thiyena name eka gnn)
