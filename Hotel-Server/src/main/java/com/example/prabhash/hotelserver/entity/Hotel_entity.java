@@ -20,6 +20,7 @@ public class Hotel_entity {
     private String hotelId;
     private  String packageId;
     private String hotelName;
+    private String stars;
     private String hotelCategory;
     private String hotelLocation;
     private String hotelLocationWithCoordinates;

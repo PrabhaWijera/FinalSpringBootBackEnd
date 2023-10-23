@@ -25,6 +25,8 @@ public class Hotel_dto implements Serializable,SuperDto {
 
     private String hotelCategory;
 
+    private String stars;
+
     private String hotelLocation;
 
     private String hotelLocationWithCoordinates;
