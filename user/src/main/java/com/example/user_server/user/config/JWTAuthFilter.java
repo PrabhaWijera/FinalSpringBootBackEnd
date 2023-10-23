@@ -1,48 +1,49 @@
-package com.example.prabhash.guideserver.config;
+package com.example.user_server.user.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
-
+import org.springframework.security.core.userdetails.UserDetailsService;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 
 public class JWTAuthFilter extends OncePerRequestFilter {
-
+    public static String JWT_TOKEN;
     @Autowired
-   private final HandlerExceptionResolver handlerExceptionResolver;
+    private final HandlerExceptionResolver handlerExceptionResolver;
     @Autowired
     private JWTService JWTService;
-    public static String JWT_TOKEN;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        System.out.println("This is JWTAuthFilter."+request.getHeader("Authorization"));
+    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
+        System.out.println("This is JWTAuthFilter." + request.getHeader("Authorization"));
         String authHeader = request.getHeader("Authorization");//Extracting the header.
         String jwtToken = null;
         String userName;
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            System.out.println("No token found! - This is HS.");
+            System.out.println("No token found! - This is UA S.");
             filterChain.doFilter(request, response);
             return;
         }
         jwtToken = authHeader.substring(7);
-        JWT_TOKEN=jwtToken;
+        JWT_TOKEN = jwtToken;
 
 
         try {
@@ -55,18 +56,15 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         }
         //Checking of the username's not nullability  and the authentication status of the current user.
         if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            UserDetails user = userDetailsService.loadUserByUsername(userName);
+            System.out.println("User : " + user.toString());
 
-            if (JWTService.validateToken(jwtToken) && JWTService.getUserRole(jwtToken).equals("A_GUIDE") || JWTService.getUserRole(jwtToken).equals("packageAdmin")) {
-                System.out.println("User role : "+JWTService.getUserRole(jwtToken));
-                List<SimpleGrantedAuthority> simpleGrantedAuthorities=new ArrayList<>();
-                simpleGrantedAuthorities.add(new SimpleGrantedAuthority(JWTService.getUserRole(jwtToken)));
-                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userName, null,simpleGrantedAuthorities);
+            if (JWTService.validateToken(jwtToken, user) && JWTService.getUserRole(jwtToken).equals("user") || JWTService.getUserRole(jwtToken).equals("userAdmin") || JWTService.getUserRole(jwtToken).equals("packageDetailsAdmin") || JWTService.getUserRole(jwtToken).equals("paymentsAdmin")) {
+                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
                 System.out.println("auth status: " + authToken.isAuthenticated());
-                System.out.println("Here is user role : "+JWTService.getUserRole(jwtToken));
+                System.out.println("Here is user role : " + JWTService.getUserRole(jwtToken));
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
-
-
 
 
             }
@@ -76,6 +74,6 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
 
 
-
     }
+
 }

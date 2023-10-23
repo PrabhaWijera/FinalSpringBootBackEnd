@@ -21,10 +21,6 @@ public class  UserApplication {
 		System.out.println("USER-SERVER IS RUNNING!!!");
 	}
 
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
 
 	@Bean
 	public RestTemplate restTemplate() {

@@ -54,6 +54,7 @@ public class UserEntity implements UserDetails ,SuperEntity{
     private String userImageLocation;
 
     private boolean isAuthenticated;
+
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> packageDetailsIDList;
     @ElementCollection(fetch = FetchType.EAGER)

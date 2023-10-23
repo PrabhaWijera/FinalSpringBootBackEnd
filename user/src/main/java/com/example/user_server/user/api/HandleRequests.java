@@ -1,6 +1,6 @@
 package com.example.user_server.user.api;
 
-import com.example.user_server.user.config.JwtService;
+import com.example.user_server.user.config.JWTService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class HandleRequests {
 
     @Autowired
-    private JwtService jwtService;
+    private JWTService jwtService;
 
     @Autowired
     private UserDetailsService userDetailsService;

@@ -2,7 +2,7 @@ package com.example.user_server.user.endpointother;
 
 import com.example.user_server.user.dto.Vehicle_dto;
 import com.example.user_server.user.fiegn.VehicleAuthFiegnInterface;
-import com.example.user_server.user.res.ResponseController;
+import com.example.user_server.user.res.Response;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -26,13 +26,13 @@ public class Vehicle_api {
 
 
     @PostMapping(path = "vSave",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController save(@Valid  @RequestBody Vehicle_dto vehicleDto){
+    public Response save(@Valid  @RequestBody Vehicle_dto vehicleDto){
         System.out.println("vehicle save working");
         return vehicleAuthFiegnInterface.save(vehicleDto);
     }
 
     @PutMapping(path = "/Vput",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController update(@RequestBody Vehicle_dto vehicleDto){
+    public Response update(@RequestBody Vehicle_dto vehicleDto){
         System.out.println("VehicleDto update working in user");
         System.out.println(vehicleDto.toString());
         return vehicleAuthFiegnInterface.update(vehicleDto);
@@ -40,12 +40,12 @@ public class Vehicle_api {
 
 
     @DeleteMapping(path = "V_delete",params ="Vehicle_ID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController delete( @RequestParam("Vehicle_ID") String vehicleID){
+    public Response delete( @RequestParam("Vehicle_ID") String vehicleID){
         return vehicleAuthFiegnInterface.delete(vehicleID);
     }
 
     @GetMapping(path = "V_search",params = "Vehicle_ID",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController search( @RequestParam("Vehicle_ID") String Vehicle_ID){
+    public Response search( @RequestParam("Vehicle_ID") String Vehicle_ID){
         return  vehicleAuthFiegnInterface.search(Vehicle_ID);
     }
 

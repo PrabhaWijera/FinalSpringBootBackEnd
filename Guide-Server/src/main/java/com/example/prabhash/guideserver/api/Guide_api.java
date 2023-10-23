@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping("")
+@RequestMapping("api/v1/guide")
 public class Guide_api {
 
     @Autowired

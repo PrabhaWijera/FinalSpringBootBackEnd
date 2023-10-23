@@ -1,71 +1,44 @@
 package com.example.user_server.user.api;
 
-
-import com.example.user_server.user.dto.Guide_dto;
 import com.example.user_server.user.dto.User_dto;
-import com.example.user_server.user.entity.UserEntity;
-import com.example.user_server.user.fiegn.GuideAuthfiegnInterface;
-import com.example.user_server.user.res.ResponseController;
-import com.example.user_server.user.service.custom.AuthService;
+import com.example.user_server.user.res.Response;
 import com.example.user_server.user.service.custom.UserService;
-import lombok.RequiredArgsConstructor;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("api/v1/auth")
-@CrossOrigin(origins = "http://localhost:63342")
-
+@CrossOrigin
 public class AuthController {
-
-    @Autowired
-    private ResponseController response;
-    @Autowired
-    private AuthService authService;
-
-    //load balancer
-    @Autowired
-    Environment environment;
-    private RestTemplate restTemplate;
-
     @Autowired
     private UserService userService;
 
-    // fiegn
-    @Autowired
-    GuideAuthfiegnInterface guideAuthfiegnInterface;
-
-
-
-
-
-
-    @PostMapping(path = "/register",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseController register(@RequestBody UserEntity userDetails){
-
-        authService.register(userDetails);
-        System.out.println(environment.getProperty("local.sever.port"));
-
-        return response;
+    @PostMapping(path = "/getAuth", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Response> getAuth(@RequestBody  User_dto userDTO) {
+        System.out.println(userDTO.toString());
+        return userService.add(userDTO);
     }
 
-    @PostMapping(path = "/uploadImg",params = "user_id")
-    public ResponseController uploadImage(@RequestParam("imgaeFile")MultipartFile multipartFile,@RequestParam("user_id") String user_id){
-        ResponseController user= userService.search(user_id);
+    @PostMapping(path = "/uploadImage",params = "userId")
+    public ResponseEntity<Response> uploadImage(@RequestParam("imageFile") MultipartFile imageFile, @RequestParam("userId") String userId) {
+        ResponseEntity<Response> user = userService.search(userId);
 
-        User_dto userDto=(User_dto) user.getData();
-        if (userDto !=null){
-         /*   userDto.(userService.handleUpload(multipartFile));*/
-           return userService.update(userDto);
+        User_dto userData = (User_dto) user.getBody().getData();
+        if(userData!=null){
+            userData.setUserImageLocation(userService.handleUploads(imageFile));
+            return userService.update(userData);
         }
-        throw new RuntimeException("User not found!!!");
+        throw new RuntimeException("User not found!");
+
+    }
+
+    @GetMapping(path = "/hello")
+    public String  getRole(){
+        return "Hello nigger!";
 
     }
 

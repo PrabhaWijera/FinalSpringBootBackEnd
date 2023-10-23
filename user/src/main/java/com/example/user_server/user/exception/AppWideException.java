@@ -1,6 +1,6 @@
 package com.example.user_server.user.exception;
 
-import com.example.user_server.user.res.ResponseController;
+import com.example.user_server.user.res.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,8 +13,8 @@ public class AppWideException{
 
 @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler({RuntimeException.class})
-    public ResponseController handleException(RuntimeException e){
-    return new ResponseController(500,e.getLocalizedMessage(),null);
+    public Response handleException(RuntimeException e){
+    return new Response(500,e.getLocalizedMessage(),null);
 }
 
 }

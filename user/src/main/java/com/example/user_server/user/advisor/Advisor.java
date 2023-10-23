@@ -1,6 +1,6 @@
 package com.example.user_server.user.advisor;
 
-import com.example.user_server.user.res.ResponseController;
+import com.example.user_server.user.res.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -13,11 +13,11 @@ public class Advisor {
 
 
     @Autowired
-    private ResponseController responseController;
+    private Response responseController;
 
     @ExceptionHandler({Exception.class})
-    public ResponseController handleException(Exception exception){
-        responseController.setStateCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
+    public Response handleException(Exception exception){
+        responseController.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
         responseController.setMessage("Sever threw an Exception"+exception.getLocalizedMessage());
         System.out.println(responseController.getMessage().toString());
         responseController.setData(null);
