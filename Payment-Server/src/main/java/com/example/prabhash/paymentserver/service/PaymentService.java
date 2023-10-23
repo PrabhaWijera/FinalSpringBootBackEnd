@@ -1,17 +1,18 @@
 package com.example.prabhash.paymentserver.service;
 
 import com.example.prabhash.paymentserver.dto.Payment_dto;
-import com.example.prabhash.paymentserver.res.ResponsController;
+import com.example.prabhash.paymentserver.res.Response;
+import org.springframework.http.ResponseEntity;
 
 public interface PaymentService <T extends Payment_dto,ID>{
-    ResponsController search(String id);
+    ResponseEntity<Response> search(String id);
 
-    ResponsController save(T t);
+    ResponseEntity<Response>  save(T t);
 
-    ResponsController  update(T t);
+    ResponseEntity<Response>   update(T t);
 
-    ResponsController  delete(String id);
+    ResponseEntity<Response>   delete(String id);
 
-    ResponsController  getAll();
-    ResponsController  createResponse(int statusCode, Object data, String message);
+    ResponseEntity<Response>   getAll();
+    ResponseEntity<Response> createAndSendResponse(int statusCode, String msg, Object data);
 }
