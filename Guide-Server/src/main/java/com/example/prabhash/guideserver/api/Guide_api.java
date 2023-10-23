@@ -33,9 +33,9 @@ public class Guide_api {
    }
 
    @PutMapping(path = "Gput",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-   public ResponseEntity update(  @RequestBody Guide_dto guideDto){
+   public ResponseEntity update( @RequestBody Guide_dto guideDto){
        System.out.println("update guide"+guideDto.toString());
-       return guideService.save(guideDto);
+       return guideService.update(guideDto);
    }
 
    @DeleteMapping(path = "Gdelete",params = "guideID",produces = MediaType.APPLICATION_JSON_VALUE)
