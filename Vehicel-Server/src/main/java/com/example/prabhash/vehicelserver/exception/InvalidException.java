@@ -1,8 +1,0 @@
-package com.example.prabhash.vehicelserver.exception;
-
-public class InvalidException extends java.lang.Exception {
-
-    public InvalidException(String message){
-        super(message);
-    }
-}

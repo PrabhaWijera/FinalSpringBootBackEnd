@@ -5,13 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@Component
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ResponseController {
-
-    private int StatusCode;
+@Component
+public class Response {
+    private int statusCode;
     private String message;
     private Object data;
 }

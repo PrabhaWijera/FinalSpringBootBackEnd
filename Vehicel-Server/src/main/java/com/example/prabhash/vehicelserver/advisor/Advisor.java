@@ -1,29 +1,45 @@
 package com.example.prabhash.vehicelserver.advisor;
 
-import com.example.prabhash.vehicelserver.res.ResponseController;
+import com.example.prabhash.vehicelserver.res.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@Component
+import java.util.HashMap;
+
+
 @RestControllerAdvice
+@CrossOrigin
 public class Advisor {
 
 
     @Autowired
-    private ResponseController responseController;
-
+    private Response response;
 
     @ExceptionHandler({Exception.class})
-    public ResponseController handleException(Exception e){
-        responseController.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        responseController.setMessage("Server thre an Exception "+e.getLocalizedMessage());
-        System.out.println(responseController.getMessage().toString());
-        System.out.println(responseController.getData().toString());
-        System.out.println(responseController.getStatusCode());
-        responseController.setData(null);
-        return responseController;
+    public Response handleExceptions(Exception exception) {
+        response.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        response.setMessage("Hotel Server threw an exception : " + exception.getLocalizedMessage());
+        response.setData(null);
+        return response;
+
+    }
+
+    /*Validation Exception Handling.*/
+
+    @ExceptionHandler({MethodArgumentNotValidException.class})
+    public Response handleExceptions(MethodArgumentNotValidException exception) {
+        HashMap<String, String> errors = new HashMap<>();
+        exception.getBindingResult().getFieldErrors().forEach((fieldError -> {
+            errors.put(fieldError.getField(), fieldError.getDefaultMessage());
+        }));
+
+        response.setMessage("Server threw an exception : " + exception.getLocalizedMessage());
+        response.setData(errors);
+        return response;
+
     }
 }
