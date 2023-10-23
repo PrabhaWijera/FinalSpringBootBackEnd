@@ -10,7 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 @Builder
-public class PackageDetails_dto implements Serializable {
+public class PackageDetails_dto implements Serializable, SuperDTO {
 
     private String packageID;
 
