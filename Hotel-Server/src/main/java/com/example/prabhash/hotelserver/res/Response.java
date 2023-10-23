@@ -9,11 +9,8 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 @Data
 @Component
-public class ResponseController {
-
-    private int stateCode;
-
+public class Response {
+    private int statusCode;
     private String message;
-
     private Object data;
 }
