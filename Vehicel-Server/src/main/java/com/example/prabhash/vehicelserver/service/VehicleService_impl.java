@@ -44,7 +44,7 @@ public class VehicleService_impl implements VehicleService {
     public ResponseEntity<Response> save(Vehicle_dto vehicleDto) {
         if (search(vehicleDto.getVehicleID()).getBody().getData()==null){
                vehicleRepo.save(modelMapper.map(vehicleDto,Vehicle_entity.class));
-            return createAndSendResponse(HttpStatus.OK.value(),null,"save ok vehicle");
+            return createAndSendResponse(HttpStatus.OK.value(),"save ok vehicle",null);
         }
         throw new RuntimeException("Vehicale save not ok");
     }
@@ -60,12 +60,12 @@ public class VehicleService_impl implements VehicleService {
             Vehicle_entity updatedEntity = modelMapper.map(vehicleDto, Vehicle_entity.class);
             updatedEntity.setVehicleID(vehicleDto.getVehicleID()); // Set the ID to ensure an update
             vehicleRepo.save(updatedEntity);
-            return createAndSendResponse(HttpStatus.OK.value(), null, "Vehicle updated successfully");
+            return createAndSendResponse(HttpStatus.OK.value(), "Vehicle updated successfully",null);
         } else {
             // The vehicle with the given ID does not exist, so create a new entry
             Vehicle_entity newEntity = modelMapper.map(vehicleDto, Vehicle_entity.class);
             vehicleRepo.save(newEntity);
-            return createAndSendResponse(HttpStatus.OK.value(), null, "Vehicle created successfully");
+            return createAndSendResponse(HttpStatus.OK.value(), "Vehicle created successfully",null );
         }
     }
 
@@ -74,7 +74,7 @@ public class VehicleService_impl implements VehicleService {
     public ResponseEntity<Response> delete(String id) {
         if(search(id).getBody().getData()!=null){
             vehicleRepo.deleteById(id);
-            return createAndSendResponse(HttpStatus.OK.value(),null,"Sucess delete vehi");
+            return createAndSendResponse(HttpStatus.OK.value(),"Sucess delete vehi",null);
         }
         throw new RuntimeException("Not found!!!!");
     }
