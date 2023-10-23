@@ -23,13 +23,18 @@ public class Hotel_dto implements Serializable,SuperDto {
     private String hotelEmail;
     private String contactNumber01;
     private String getContactNumber02;
-    private String petsStatus;
+    private boolean petsStatus;
     //Pets allowed or not
-    private String hotelFee;
+    private String FullBoarddoublehotelFee;
+    private String HalfBoardDoublehotelFee;
+    private String FullBoardTriplehotelFee;
+    private String HalfBoardTriplehotelFee;
 
-    private String criteria;
+    private String CancellationCriteria;
+
+
 
     private String remark;
-
+    private String package_id;
 
 }

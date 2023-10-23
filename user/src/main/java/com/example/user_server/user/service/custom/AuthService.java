@@ -6,8 +6,10 @@ import com.example.user_server.user.repo.User_repo;
 import com.example.user_server.user.res.ResponseController;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.Response;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.cors.CorsConfiguration;
@@ -26,16 +28,18 @@ public class AuthService {
     @Autowired
     private JwtService jwtService;
 
+
     public ResponseController register(UserEntity userDetails) {
         System.out.println(userDetails);
         String password = passwordEncoder.encode(userDetails.getPassword());
-        userDetails.setUser_password(password);
+        userDetails.setUserPassword(password);
         userRepo.save(userDetails);
         response.setStateCode(HttpStatus.OK.value());
         response.setMessage("User successfully registered and JWT Successfully generated!");
         response.setData("JWT : "+jwtService.generateToken(userDetails));
         return response;
     }
+
 
 
 }

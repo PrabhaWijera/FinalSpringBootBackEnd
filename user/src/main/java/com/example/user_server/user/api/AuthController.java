@@ -56,13 +56,13 @@ public class AuthController {
         return response;
     }
 
-    @PostMapping(path = "uploadImg",params = "user_id")
+    @PostMapping(path = "/uploadImg",params = "user_id")
     public ResponseController uploadImage(@RequestParam("imgaeFile")MultipartFile multipartFile,@RequestParam("user_id") String user_id){
         ResponseController user= userService.search(user_id);
 
         User_dto userDto=(User_dto) user.getData();
         if (userDto !=null){
-            userDto.setUserNic_Photo(userService.handleUpload(multipartFile));
+         /*   userDto.(userService.handleUpload(multipartFile));*/
            return userService.update(userDto);
         }
         throw new RuntimeException("User not found!!!");

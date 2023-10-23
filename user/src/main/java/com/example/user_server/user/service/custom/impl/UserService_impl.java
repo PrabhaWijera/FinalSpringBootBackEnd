@@ -1,5 +1,6 @@
 package com.example.user_server.user.service.custom.impl;
 
+import com.example.user_server.user.config.JwtService;
 import com.example.user_server.user.dto.User_dto;
 import com.example.user_server.user.entity.UserEntity;
 import com.example.user_server.user.repo.User_repo;
@@ -10,9 +11,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.Response;
 import org.springframework.http.HttpStatus;
 
 
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,14 +41,11 @@ public class UserService_impl implements UserService {
     private ResponseController responseController;
 
 
-@Autowired
-private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-
-
-
-
-
+    @Autowired
+    private JwtService jwtService;
 
 
 
@@ -59,36 +60,24 @@ private PasswordEncoder passwordEncoder;
     }
 
 
-
-
-
-
-
-
-
     @Override
     @Transactional
     public ResponseController save(User_dto userDto) {
-        // Check if the user with the specified user_id already exists
-        UserEntity existingUser = (UserEntity) search(userDto.getUser_id()).getData();
+        if (search(userDto.getUserId()).getData() == null) {
+            userDto.setUserPassword(passwordEncoder.encode(userDto.getUserPassword()));
 
-        if (existingUser == null) {
-            // Additional validation logic can be added here
+            userRepo.save(modelMapper.map(userDto, UserEntity.class));
+            HashMap<String,Object> userRoles= new HashMap<>();
+            userRoles.put("userRole",userDto.getUserRole());
+            return createandSendResponed(HttpStatus.CREATED.value(), "User Successfully saved and JWT successfully generated!", jwtService.generateToken(userRoles,modelMapper.map(userDto, UserEntity.class)));
 
-            // Map the User_dto to UserEntity and save it
-            UserEntity newUser = modelMapper.map(userDto, UserEntity.class);
-            userRepo.save(newUser);
-
-            return createResponse(HttpStatus.OK.value(), newUser, "User saved successfully");
-        } else {
-            // User with the same user_id already exists
-            throw new RuntimeException("User with this ID already exists");
         }
+        return createandSendResponed(HttpStatus.CONFLICT.value(), "User already exists!", null);
     }
 
     @Override
     public ResponseController update(User_dto userDto) {
-         if (search(userDto.getUser_id()).getData() !=null){
+         if (search(userDto.getUserId()).getData() !=null){
              userRepo.save(modelMapper.map(userDto,UserEntity.class));
              return createResponse(HttpStatus.OK.value(), null,"Update OK!");
          }
@@ -136,7 +125,7 @@ private PasswordEncoder passwordEncoder;
     public ResponseController getUserByUserName(String username, String password) {
         Optional<UserEntity> user = userRepo.findByUserName(username);
         if (user.isPresent()){
-            String hashPass=user.get().getUser_password();
+            String hashPass=user.get().getPassword();
             if (passwordValidaor(password,hashPass)){
                 User_dto userDto = modelMapper.map(user.get(), User_dto.class);
                 userDto.setAuthenticated(true);
@@ -159,5 +148,10 @@ private PasswordEncoder passwordEncoder;
        return responseController;
     }
 
-
+/*public ResponseEntity<ResponseController>createAndResponse(int statusCode,String message,Object data){
+        responseController.setMessage(message);
+        responseController.setData(data);
+        return new ResponseEntity<>(responseController, HttpStatusCode.valueOf(statusCode));
+}
+    */
 }

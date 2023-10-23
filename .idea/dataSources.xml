@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="springboot_FinalAADUserDB@localhost" uuid="201fc669-35ba-4585-859a-ee7e1e0dee94">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/springboot_FinalAADUserDB</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="springboot_assigmentFinalPackageDBGuide@localhost" uuid="3f258e0f-b213-46ed-902b-56a86c88854c">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBGuide</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="springboot_assigmentFinalPackageDBHotel@localhost" uuid="d657b788-49a3-473d-adb2-b511b1412cf6">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
@@ -48,6 +34,20 @@
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBVehicle</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="springboot_FinalAADUserDB@localhost" uuid="e63a422d-1bf1-4022-9931-f17bba041d99">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/springboot_FinalAADUserDB</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="springboot_assigmentFinalPackageDBGuide@localhost" uuid="c97f83cf-82fc-41ad-9dde-4976ec4eee7b">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBGuide</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

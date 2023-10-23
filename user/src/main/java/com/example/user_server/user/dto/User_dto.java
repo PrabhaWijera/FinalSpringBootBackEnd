@@ -1,7 +1,9 @@
 package com.example.user_server.user.dto;
 
 
+import com.example.user_server.user.entity.GENDER;
 import com.example.user_server.user.entity.Role;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -13,31 +15,34 @@ import java.io.Serializable;
 @Builder
 public class User_dto implements Serializable ,SuperDto {
 
-    private String user_id;
+    private String userRole;
+
+    private String userId;
+
+    private String name;
 
     private String userName;
 
-    private String user_nic;
+    private String userPassword;
 
-    private String user_password;
+    private String userNIC;
 
-    private String gender;
+    private String userNICImageLocation;
 
-    private String age;
+    private int userAge;
 
-    private String email;
 
-    private String contactNumber;
+    private GENDER gender;
 
-    private String remark;
+    private String userEmail;
 
-    private String userNic_Photo;
+    private String userPhone;
 
-    private Role role;//string d dnne
+    private String userAddress;
+
+    private String remarks;
+
+    private String userImageLocation;
 
     private boolean isAuthenticated;
-
-
-/*
-    private String userNic_Photo;*/
 }

@@ -20,50 +20,53 @@ import java.util.Set;
 @Builder
 @Table
 @Entity
-public class UserEntity implements UserDetails {
+public class UserEntity implements UserDetails ,SuperEntity{
 
+    private String userRole;
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String user_id;
 
+    private String userId;
+
+    private String name;
 
     private String userName;
 
-    private String user_nic;
+    private String userPassword;
 
-    private String user_password;
+    private String userNIC;
 
-    private String gender;
+    private String userNICImageLocation;
 
-    private String age;
-    @Email
-    private String email;
+    private int userAge;
+    @Enumerated(EnumType.STRING)
 
-    private String contactNumber;
+    private GENDER gender;
 
-    private String remark;
+    private String userEmail;
 
-    @Lob
-    @Column(nullable = false,columnDefinition = "Text")
-    private String userNic_Photo;
+    private String userPhone;
 
-    @Enumerated
-    private Role role;
+    private String userAddress;
+
+    private String remarks;
+
+    private String userImageLocation;
 
     private boolean isAuthenticated;
-
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> packageDetailsIDList;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> paymentsIDList;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
-
+        return List.of(new SimpleGrantedAuthority(userRole));
     }
-    //others
-    private String package_id;
 
     @Override
     public String getPassword() {
-        return user_password;
+        return userPassword;
     }
 
     @Override
@@ -90,10 +93,5 @@ public class UserEntity implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-/*    @Column(nullable = true)
-    private String userNic_Photo;*/
-
-
 
 }

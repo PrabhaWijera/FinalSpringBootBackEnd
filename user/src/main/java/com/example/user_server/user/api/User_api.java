@@ -69,8 +69,7 @@ public class User_api {
             // Convert the profilePicture to a Base64-encoded string
             String base64ProfilePicture = Base64.getEncoder().encodeToString(profilePicture.getBytes());
 
-            // Set the Base64-encoded profile picture in the userDto
-            userDto.setUserNic_Photo(base64ProfilePicture);
+
         }
 
         return userService.save(userDto);

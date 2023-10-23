@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin
 @RestController
-@RequestMapping
+@RequestMapping("")
 public class Guide_api {
 
     @Autowired
@@ -43,10 +43,5 @@ public class Guide_api {
        System.out.println("Guide delete ok"+guideID);
        return guideService.delete(guideID);
    }
-
-
-
-
-
 
 }

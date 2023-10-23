@@ -29,6 +29,7 @@ public class SecurityConfiguration {
                 .disable().authorizeRequests()
                 .requestMatchers("api/v1/auth/register")
                 .permitAll()
+                .requestMatchers("/**").hasAnyAuthority("user", "userAdmin", "packageDetailsAdmin", "paymentsAdmin")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -42,4 +43,6 @@ public class SecurityConfiguration {
 
 
     }
+
+
 }

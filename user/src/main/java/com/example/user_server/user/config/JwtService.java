@@ -69,4 +69,8 @@ public class  JwtService {
     return extractClaim(jwtToken, Claims::getExpiration);
   }
 
+
+  public String getUserRole(String jwtToken){
+    return extractAllClaims(jwtToken).get("userRole").toString();
+  }
 }
