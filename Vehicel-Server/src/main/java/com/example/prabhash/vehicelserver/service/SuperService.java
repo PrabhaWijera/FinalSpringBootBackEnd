@@ -17,7 +17,7 @@ public interface SuperService <T extends SuperDto, ID> {
 
     ResponseEntity<Response> delete(String id);
 
-    ResponseEntity<Response>   getAll();
+    ResponseEntity<Response> getAll();
 
     ResponseEntity<Response> createAndSendResponse(int statusCode,String msg,Object data);
 

@@ -16,7 +16,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 @Builder
-public class Guide_dto implements Serializable {
+public class Guide_dto implements Serializable, SuperDto {
 
 
     private String guideID;

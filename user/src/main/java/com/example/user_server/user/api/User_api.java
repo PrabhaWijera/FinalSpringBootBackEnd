@@ -35,6 +35,7 @@ public class User_api {
     public ResponseEntity<Response> deleteUser(@RequestParam("userId") String userId) {
         return userService.delete(userId);
     }
+
     @GetMapping(path = "/getAllUsers", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response> saveUser() {
         return userService.getAll();

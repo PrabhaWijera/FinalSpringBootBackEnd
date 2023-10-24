@@ -22,7 +22,9 @@ public class Vehicle_entity {
     private String vehicleBrand;
 
     private String vehicleCategory;
+
     private String vehicleName;
+
     private String fuelType;
 
     private String hybrid;

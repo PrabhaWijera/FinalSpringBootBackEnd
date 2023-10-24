@@ -51,10 +51,10 @@ public class Vehicle_api {
 
 //for package testing
 
-    @PostMapping("/getvehi")
-    public ResponseEntity <String> getAllVehicles(@RequestParam String id) {
+    @GetMapping(value = "/getvehi",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity <Response> getAllVehicles() {
         // Return the data as a response
-        return ResponseEntity.ok(id);
+      return vehicleService.getAll();
     }
 
 

@@ -89,7 +89,7 @@ public class VehicleService_impl implements VehicleService {
             });
             return createAndSendResponse(HttpStatus.FOUND.value(),"Sucess",vehicleDtos);
         }
-        throw new RuntimeException("No found all");
+        return createAndSendResponse(HttpStatus.NOT_FOUND.value(),"No success",null);
     }
 
     @Override

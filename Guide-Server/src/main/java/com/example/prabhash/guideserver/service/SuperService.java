@@ -1,13 +1,10 @@
 package com.example.prabhash.guideserver.service;
 
-import com.example.prabhash.guideserver.dto.Guide_dto;
-import com.example.prabhash.guideserver.entity.Guide_entity;
+import com.example.prabhash.guideserver.dto.SuperDto;
 import com.example.prabhash.guideserver.res.Response;
 import org.springframework.http.ResponseEntity;
 
-import java.util.Optional;
-
-public interface GuideService<T extends Guide_dto,ID> {
+public interface SuperService  <T extends SuperDto, ID>{
     ResponseEntity<Response> search(String id);
 
     ResponseEntity <Response>save(T t);
@@ -20,5 +17,4 @@ public interface GuideService<T extends Guide_dto,ID> {
 
     ResponseEntity <Response>getAll();
     ResponseEntity<Response> createAndSendResponse(int statusCode, String msg, Object data);
-
 }

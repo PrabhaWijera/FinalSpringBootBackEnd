@@ -4,6 +4,7 @@ import com.example.prabhash.guideserver.dto.Guide_dto;
 import com.example.prabhash.guideserver.entity.Guide_entity;
 import com.example.prabhash.guideserver.repo.GuideRepo;
 import com.example.prabhash.guideserver.res.Response;
+import com.example.prabhash.guideserver.service.custom.GuideService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class GuideService_impl implements GuideService{
+public class GuideService_impl implements GuideService {
 
 
     @Autowired
@@ -50,13 +51,21 @@ public class GuideService_impl implements GuideService{
 
     @Override
     public ResponseEntity<Response> update(Guide_dto guideDto) {
-        if (search(guideDto.getGuideID()).getBody().getData()!=null){
-            guideRepo.save(modelMapper.map(guideDto,Guide_entity.class));
-            return createAndSendResponse(HttpStatus.OK.value(), "Success",null);
-        }
-        throw new RuntimeException("No update found guide");
-    }
+        Optional<Guide_entity> existingGuide = guideRepo.findById(guideDto.getGuideID());
 
+        if (existingGuide.isPresent()) {
+            // The vehicle with the given ID exists, so update it
+            Guide_entity updatedEntity = modelMapper.map(guideDto, Guide_entity.class);
+            updatedEntity.setGuideID(guideDto.getGuideID()); // Set the ID to ensure an update
+            guideRepo.save(updatedEntity);
+            return createAndSendResponse(HttpStatus.OK.value(), "Vehicle updated successfully",null);
+        } else {
+            // The vehicle with the given ID does not exist, so create a new entry
+            Guide_entity newEntity = modelMapper.map(guideDto, Guide_entity.class);
+            guideRepo.save(newEntity);
+            return createAndSendResponse(HttpStatus.OK.value(), "Vehicle created successfully",null );
+        }
+    }
     @Override
     public ResponseEntity<Response> findByGuideName(String guideName) {
         Optional<Guide_entity> guideEntity = guideRepo.findByGuideName(guideName);
@@ -80,14 +89,14 @@ public class GuideService_impl implements GuideService{
     @Override
     public ResponseEntity<Response> getAll() {
         List<Guide_entity>guideEntities=guideRepo.findAll();
-        if (guideEntities.isEmpty()){
-            ArrayList<Guide_dto>arrayList=new ArrayList<>();
+        if (!guideEntities.isEmpty()){
+            ArrayList<Guide_dto>guideDtos=new ArrayList<>();
             guideEntities.forEach(guideEntity -> {
-                arrayList.add(modelMapper.map(guideEntity,Guide_dto.class));
+                guideDtos.add(modelMapper.map(guideEntity,Guide_dto.class));
             });
-            return createAndSendResponse(HttpStatus.OK.value(), "Find all Success",null);
+            return createAndSendResponse(HttpStatus.FOUND.value(),"Sucess",guideDtos);
         }
-        throw new RuntimeException("Find guide all error");
+        return createAndSendResponse(HttpStatus.NOT_FOUND.value(),"No success",null);
     }
 
     @Override

@@ -54,3 +54,8 @@ public class SecurityConfiguration {
         return source;
 }
 }
+//nrmal user
+//eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyUm9sZSI6IlVTRVIiLCJzdWIiOiJ1MjAwMSIsImlhdCI6MTY5ODE1MjEzNywiZXhwIjo0ODUxNzUyMTM3fQ.IXDk26PL3wg-U0_5aIc8QNyViB9N6AR01MVoSXjj3QQ
+
+//admin controller user
+//eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyUm9sZSI6IkFEX1VTRVIiLCJzdWIiOiJhZG1pblVzZXIyMDAxIiwiaWF0IjoxNjk4MTUyNDMwLCJleHAiOjQ4NTE3NTI0MzB9.xw17OLiV8dS54uviHl8jtR1KrTn6difopKvdM1hYndk
