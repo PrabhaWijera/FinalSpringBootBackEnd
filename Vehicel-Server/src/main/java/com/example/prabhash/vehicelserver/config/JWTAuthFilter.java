@@ -59,6 +59,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
 
             if (JWTService.validateToken(jwtToken) && JWTService.getUserRole(jwtToken).equals("A_VEHICLE") || JWTService.getUserRole(jwtToken).equals("packageAdmin")) {
                 System.out.println("User role : "+JWTService.getUserRole(jwtToken));
+                System.out.println(JWTService.getUserRole(jwtToken));
                     List<SimpleGrantedAuthority>simpleGrantedAuthorities=new ArrayList<>();
                     simpleGrantedAuthorities.add(new SimpleGrantedAuthority(JWTService.getUserRole(jwtToken)));
                     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userName, null,simpleGrantedAuthorities);

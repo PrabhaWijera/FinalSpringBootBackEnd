@@ -1,10 +1,10 @@
 package com.example.prabhash.paymentserver.service;
 
-import com.example.prabhash.paymentserver.dto.Payment_dto;
+import com.example.prabhash.paymentserver.dto.SuperDto;
 import com.example.prabhash.paymentserver.res.Response;
 import org.springframework.http.ResponseEntity;
 
-public interface PaymentService <T extends Payment_dto,ID>{
+public interface SuperService  <T extends SuperDto, ID>{
     ResponseEntity<Response> search(String id);
 
     ResponseEntity<Response>  save(T t);

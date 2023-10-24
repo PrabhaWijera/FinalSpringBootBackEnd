@@ -3,15 +3,15 @@ package com.example.prabhash.paymentserver.api;
 
 import com.example.prabhash.paymentserver.dto.Payment_dto;
 import com.example.prabhash.paymentserver.res.Response;
-import com.example.prabhash.paymentserver.service.PaymentService;
+import com.example.prabhash.paymentserver.service.custom.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+@CrossOrigin
 @RestController
-@RequestMapping("/Payment")
-@CrossOrigin(origins = "http://localhost:8080")
+@RequestMapping("api/v1/Payment")
+
 public class Payment_api {
 
     @Autowired
@@ -26,14 +26,14 @@ public class Payment_api {
 
     @PostMapping(path = "PSave",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response> save(@RequestBody Payment_dto paymentDto){
-        System.out.println("save payment");
+        System.out.println("save payment in controller");
         return paymentService.save(paymentDto);
     }
 
     @PutMapping(path = "Pput",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response> update(@RequestBody Payment_dto paymentDto){
         System.out.println("put payment");
-        return paymentService.save(paymentDto);
+        return paymentService.update(paymentDto);
     }
 
     @DeleteMapping(path = "Pdelet",params = "PayID",produces = MediaType.APPLICATION_JSON_VALUE)

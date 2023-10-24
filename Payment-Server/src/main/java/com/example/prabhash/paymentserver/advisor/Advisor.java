@@ -15,13 +15,14 @@ import java.util.HashMap;
 @CrossOrigin
 public class Advisor {
 
+
     @Autowired
     private Response response;
 
     @ExceptionHandler({Exception.class})
     public Response handleExceptions(Exception exception) {
         response.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        response.setMessage("Hotel Server threw an exception : " + exception.getLocalizedMessage());
+        response.setMessage("payment Server threw an exception : " + exception.getLocalizedMessage());
         response.setData(null);
         return response;
 

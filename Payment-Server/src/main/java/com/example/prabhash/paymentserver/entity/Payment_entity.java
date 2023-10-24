@@ -1,24 +1,25 @@
 package com.example.prabhash.paymentserver.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
+@Table
+@Entity
+@Builder
 public class Payment_entity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String payID;
-
-    private int DailyIncome;
-    private int AnnualIncome;
-    private int MonthlyIncome;
-    private int WeeklyIncome;
+    private String DIncome;
+    private String AIncome;
+    private String MIncome;
+    private String WIncome;
 
 }

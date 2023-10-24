@@ -8,13 +8,12 @@ import java.io.Serializable;
 @Data
 @Builder
 @ToString
-public class Payment_dto implements Serializable {
+public class Payment_dto implements Serializable, SuperDto {
 
     private String payID;
-
-    private int DailyIncome;
-    private int AnnualIncome;
-    private int MonthlyIncome;
-    private int WeeklyIncome;
+    private String DIncome;
+    private String AIncome;
+    private String MIncome;
+    private String WIncome;
 
 }

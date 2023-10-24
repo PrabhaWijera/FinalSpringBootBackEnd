@@ -15,13 +15,6 @@
       <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBpackage</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="springboot_assigmentFinalPackageDBPayment@localhost" uuid="97083fa4-0293-48a0-9c88-bdad7b91ca6a">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBPayment</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="springboot_FinalAADUserDB@localhost" uuid="e63a422d-1bf1-4022-9931-f17bba041d99">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
@@ -48,6 +41,20 @@
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBHotel</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="springboot_assigmentFinalImageUploadServer@localhost" uuid="2f12dacf-f001-43c0-a91c-698dfbb76b9a">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalImageUploadServer</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="springboot_assigmentFinalPackageDBPayment@localhost" uuid="6d50c7cf-5d45-4a3e-8854-cf1c6cf65f64">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBPayment</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

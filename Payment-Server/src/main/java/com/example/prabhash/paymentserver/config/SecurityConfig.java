@@ -5,7 +5,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -15,12 +23,12 @@ public class SecurityConfig {
     private JWTAuthFilter jwtAuthFilter;
 
 
-    @Bean
+  @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .addFilterBefore(jwtAuthFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .requestMatchers("/**").hasAnyAuthority("hotelAdmin","packageAdmin")
+                .requestMatchers("/**").hasAnyAuthority("packageAdmin","A_PAYMENT")
                 .anyRequest().permitAll()
 
                 .and()
@@ -28,7 +36,38 @@ public class SecurityConfig {
         return http.build();
 
     }
-}
-//eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyUm9sZSI6IkFfUEFZTUVOVCIsInN1YiI6InBheW1lbnRhZG1pbiIsImlhdCI6MTY5ODA2NzU5NywiZXhwIjo0ODUxNjY3NTk3fQ.M49VkVWi2Wwwfw5QEGq9r8ppviJRnrPoHh0b2Uwcep8
+/*@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+     http
+             .cors()
+             .and()
+             .csrf().disable()
+             .addFilterBefore(jwtAuthFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class)
+             .authorizeRequests()
+             .requestMatchers("/**").permitAll() // Accessible to everyone
+             .requestMatchers("/**").hasAnyAuthority("USER","A_PAYMENT") // Requires ROLE_ADMIN authority
+//                .antMatchers("/**").hasAuthority("PDA") // Requires ROLE_ADMIN authority
+             .anyRequest().authenticated() // Any other request requires authentication
+             .and()
+             .sessionManagement()
+             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+             .and()
+             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+    return http.build();
+ }*/
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:63342"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowedHeaders(Collections.singletonList("*"));
+        configuration.setAllowCredentials(true);
 
-//eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyUm9sZSI6IkFfUEFZTUVOVCIsInN1YiI6IlBheW1lbnRBZG1pbiIsImlhdCI6MTY5ODA2ODIwNCwiZXhwIjo0ODUxNjY4MjA0fQ._pKMG_OfKY2OJ7Cp4SOSTp7GLZ4smKGHiT2ckwJnr00
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+
+        return source;
+    }
+}
+//eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyUm9sZSI6IkFfUEFZTUVOVCIsInN1YiI6IjIwMDEiLCJpYXQiOjE2OTgxNDUyODcsImV4cCI6NDg1MTc0NTI4N30.YgMtmw0XOvbOjmSr_OmruF6FPXGUC16D5C_1EVCQC3M"
