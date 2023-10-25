@@ -90,11 +90,11 @@ public class GuideService_impl implements GuideService {
     public ResponseEntity<Response> getAll() {
         List<Guide_entity>guideEntities=guideRepo.findAll();
         if (!guideEntities.isEmpty()){
-            ArrayList<Guide_dto>guideDtos=new ArrayList<>();
+           List<Guide_dto>guideDtos=new ArrayList<>();
             guideEntities.forEach(guideEntity -> {
                 guideDtos.add(modelMapper.map(guideEntity,Guide_dto.class));
             });
-            return createAndSendResponse(HttpStatus.FOUND.value(),"Sucess",guideDtos);
+            return createAndSendResponse(HttpStatus.OK.value(),"Success Guide",guideDtos);
         }
         return createAndSendResponse(HttpStatus.NOT_FOUND.value(),"No success",null);
     }

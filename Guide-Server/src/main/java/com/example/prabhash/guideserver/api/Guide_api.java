@@ -49,7 +49,7 @@ public class Guide_api {
 
 
     }
-    @GetMapping(value = "/getAllGuide",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/getAllGuide",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity <Response> getAllGuides() {
         // Return the data as a response
         return guideService.getAll();
