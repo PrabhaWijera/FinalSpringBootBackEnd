@@ -35,9 +35,9 @@ public class GuideService_impl implements GuideService {
     public ResponseEntity<Response> search(String id) {
         Optional<Guide_entity>guideEntity=guideRepo.findById(id);
         if (guideEntity.isPresent()){
-            return createAndSendResponse(HttpStatus.FOUND.value(),"Success service",modelMapper.map(guideEntity.get(),Guide_dto.class));
+            return createAndSendResponse(HttpStatus.OK.value(),"Success service",modelMapper.map(guideEntity.get(),Guide_dto.class));
         }
-        return createAndSendResponse(HttpStatus.NOT_EXTENDED.value(), "Error",null);
+        return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Guide NOT Found Error",null);
     }
 
     @Override
@@ -70,20 +70,20 @@ public class GuideService_impl implements GuideService {
     public ResponseEntity<Response> findByGuideName(String guideName) {
         Optional<Guide_entity> guideEntity = guideRepo.findByGuideName(guideName);
         if (guideEntity.isPresent()) {
-            return createAndSendResponse(HttpStatus.OK.value(), "Hotel Successfully retrieved!", modelMapper.map(guideEntity.get(), Guide_dto.class));
+            return createAndSendResponse(HttpStatus.OK.value(), "Guide Successfully retrieved!", modelMapper.map(guideEntity.get(), Guide_dto.class));
 
         }
-        return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Hotel Not Found!", null);
+        return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Guide Not Found!", null);
     }
 
 
     @Override
     public ResponseEntity<Response> delete(String id) {
-        if (search(id).getBody().getData()!=null){
-            guideRepo.deleteById(id);
-            return createAndSendResponse(HttpStatus.OK.value(),"Sucess delete guide",null);
+        if (search(id).getBody().getData() == null){
+            return createAndSendResponse(HttpStatus.NOT_FOUND.value(),"NOT Found Guide ",null);
         }
-        throw new RuntimeException("no delete in guide");
+        guideRepo.deleteById(id);
+        return createAndSendResponse(HttpStatus.OK.value(), "Guide Delete SuccessFully",null);
     }
 
     @Override
@@ -117,6 +117,6 @@ public class GuideService_impl implements GuideService {
         guideIDList.forEach((gID)->{
             guideRepo.deleteById(gID);
         });
-        return createAndSendResponse(HttpStatus.OK.value(),"Hotels SuccessFully Delte",null);
+        return createAndSendResponse(HttpStatus.OK.value(),"Guide SuccessFully Delete",null);
     }
 }
