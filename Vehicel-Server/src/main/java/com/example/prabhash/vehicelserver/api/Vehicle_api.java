@@ -54,6 +54,7 @@ public class Vehicle_api {
     @GetMapping(value = "/getvehi",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity <Response> getAllVehicles() {
         // Return the data as a response
+        System.out.println("controller vehi");
       return vehicleService.getAll();
     }
 

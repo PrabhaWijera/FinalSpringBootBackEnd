@@ -86,8 +86,9 @@ public class VehicleService_impl implements VehicleService {
             ArrayList<Vehicle_dto>vehicleDtos=new ArrayList<>();
             vehicleEntities.forEach(vehicleEntity -> {
                 vehicleDtos.add(modelMapper.map(vehicleEntity,Vehicle_dto.class));
+                System.out.println("service vehi");
             });
-            return createAndSendResponse(HttpStatus.FOUND.value(),"Sucess",vehicleDtos);
+            return createAndSendResponse(HttpStatus.FOUND.value(),"Success",vehicleDtos);
         }
         return createAndSendResponse(HttpStatus.NOT_FOUND.value(),"No success",null);
     }
