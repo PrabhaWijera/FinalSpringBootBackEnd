@@ -111,4 +111,12 @@ public class GuideService_impl implements GuideService {
 
     }
 
+    @Override
+    public ResponseEntity<Response> deleteAllGuides(List<String> guideIDList) {
+        System.out.println("Guide service Impl"+guideIDList);
+        guideIDList.forEach((gID)->{
+            guideRepo.deleteById(gID);
+        });
+        return createAndSendResponse(HttpStatus.OK.value(),"Hotels SuccessFully Delte",null);
+    }
 }
