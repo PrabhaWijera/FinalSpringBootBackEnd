@@ -81,16 +81,16 @@ public class VehicleService_impl implements VehicleService {
 
     @Override
     public ResponseEntity<Response> getAll() {
-        List<Vehicle_entity>vehicleEntities=vehicleRepo.findAll();
-        if (!vehicleEntities.isEmpty()){
-            ArrayList<Vehicle_dto>vehicleDtos=new ArrayList<>();
-            vehicleEntities.forEach(vehicleEntity -> {
-                vehicleDtos.add(modelMapper.map(vehicleEntity,Vehicle_dto.class));
+        List<Vehicle_entity> vehicles =vehicleRepo.findAll();
+        if (!vehicles.isEmpty()){
+            List<Vehicle_dto>vehicleDTOS =new ArrayList<>();
+            vehicles.forEach(vehicleEntity -> {
+                vehicleDTOS.add(modelMapper.map(vehicleEntity,Vehicle_dto.class));
                 System.out.println("service vehi");
             });
-            return createAndSendResponse(HttpStatus.FOUND.value(),"Success",vehicleDtos);
+            return createAndSendResponse(HttpStatus.OK.value(), "Hotels Successfully retrieved!", vehicleDTOS);
         }
-        return createAndSendResponse(HttpStatus.NOT_FOUND.value(),"No success",null);
+        return createAndSendResponse(HttpStatus.NOT_FOUND.value(),"No success Found ",null);
     }
 
     @Override
@@ -118,5 +118,17 @@ public class VehicleService_impl implements VehicleService {
 
         }
         return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Hotel Not Found!", null);
+    }
+
+
+
+    @Override
+    public ResponseEntity<Response> findByVehicleBrand(String vehicleBrand) {
+        Optional<Vehicle_entity> vehicle = vehicleRepo.findByVehicleBrand(vehicleBrand);
+        if (vehicle.isPresent()) {
+            return createAndSendResponse(HttpStatus.OK.value(), "Vehicle Successfully retrieved!", modelMapper.map(vehicle.get(), Vehicle_dto.class));
+
+        }
+        return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Vehicle Not Found!", null);
     }
 }

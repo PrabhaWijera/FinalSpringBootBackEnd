@@ -61,8 +61,6 @@ public class Hotel_api {
     @GetMapping(path = "/getHotelByHotelName",params = "hotelName",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response>getHotelByName(@RequestParam("hotelName")String hotelName){
         return hotelService.findByHotelName(hotelName);
-
-
     }
     @GetMapping(path = "H_search",params = "H_ID",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response> search(@RequestParam("H_ID") String H_ID){

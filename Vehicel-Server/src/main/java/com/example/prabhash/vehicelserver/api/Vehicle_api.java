@@ -51,7 +51,7 @@ public class Vehicle_api {
 
 //for package testing
 
-    @GetMapping(value = "/getvehi",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/getAllVehicle",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity <Response> getAllVehicles() {
         // Return the data as a response
         System.out.println("controller vehi");
@@ -60,7 +60,10 @@ public class Vehicle_api {
 
 
 
-
+    @GetMapping(path = "/getVehicleByVehicleBrand",params = "vehicleBrand",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Response>getVehicleByBrand(@RequestParam("vehicleBrand")String vehicleBrand){
+        return vehicleService.findByVehicleBrand(vehicleBrand);
+    }
 
 
 
