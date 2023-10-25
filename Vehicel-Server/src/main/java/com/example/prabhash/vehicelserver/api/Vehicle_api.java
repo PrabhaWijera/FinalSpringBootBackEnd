@@ -41,6 +41,7 @@ public class Vehicle_api {
 
     @DeleteMapping(path = "V_delete",params ="Vehicle_ID",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response> delete(@RequestParam("Vehicle_ID") String vehicleID){
+        System.out.println("controller delete");
         return vehicleService.delete(vehicleID);
     }
 

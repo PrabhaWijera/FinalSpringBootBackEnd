@@ -21,6 +21,8 @@ public class Guide_dto implements Serializable, SuperDto {
 
     private String guideID;
 
+    private String packageId;
+
     private String guideName;
 
     private String guideAddress;
@@ -43,8 +45,6 @@ public class Guide_dto implements Serializable, SuperDto {
     private String remark;
 
 
-
-    private String packageId;
 
 
 

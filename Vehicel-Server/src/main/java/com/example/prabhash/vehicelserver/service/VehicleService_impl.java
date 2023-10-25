@@ -2,6 +2,7 @@ package com.example.prabhash.vehicelserver.service;
 
 import com.example.prabhash.vehicelserver.dto.Vehicle_dto;
 import com.example.prabhash.vehicelserver.entity.Vehicle_entity;
+import com.example.prabhash.vehicelserver.fiegn.PackageInterface;
 import com.example.prabhash.vehicelserver.repo.Vehicle_repo;
 import com.example.prabhash.vehicelserver.res.Response;
 import com.example.prabhash.vehicelserver.service.custom.VehicleService;
@@ -31,13 +32,16 @@ public class VehicleService_impl implements VehicleService {
     @Autowired
     private Response response;
 
+    @Autowired
+    private PackageInterface packageInterface;
+
     @Override
     public ResponseEntity<Response> search(String id) {
         Optional<Vehicle_entity> vehicleEntity=vehicleRepo.findById(id);
         if (vehicleEntity.isPresent()){
-            return createAndSendResponse(HttpStatus.FOUND.value(), "sucsss",modelMapper.map(vehicleEntity.get(),Vehicle_dto.class));
+            return createAndSendResponse(HttpStatus.OK.value(), "sucsss",modelMapper.map(vehicleEntity.get(),Vehicle_dto.class));
         }
-        return createAndSendResponse(HttpStatus.NOT_EXTENDED.value(), "error found vehicle",null);
+        return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "error found vehicle",null);
     }
 
     @Override
@@ -53,7 +57,7 @@ public class VehicleService_impl implements VehicleService {
 
     @Override
     public ResponseEntity<Response> update(Vehicle_dto vehicleDto) {
-        Optional<Vehicle_entity> existingVehicle = vehicleRepo.findById(vehicleDto.getVehicleID());
+     /*   Optional<Vehicle_entity> existingVehicle = vehicleRepo.findById(vehicleDto.getVehicleID());
 
         if (existingVehicle.isPresent()) {
             // The vehicle with the given ID exists, so update it
@@ -66,17 +70,26 @@ public class VehicleService_impl implements VehicleService {
             Vehicle_entity newEntity = modelMapper.map(vehicleDto, Vehicle_entity.class);
             vehicleRepo.save(newEntity);
             return createAndSendResponse(HttpStatus.OK.value(), "Vehicle created successfully",null );
+        }*/
+        if (search(vehicleDto.getVehicleID()).getBody().getData() == null){
+            return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Vehicle not found!!!",null);
         }
+        Optional<Vehicle_entity> vehicleEntity =vehicleRepo.findById(vehicleDto.getVehicleID());
+        if (vehicleEntity.isPresent()){
+            packageInterface.updateVehiclePackageId(vehicleEntity.get().getPackage_id(),vehicleDto.getPackageId(),vehicleDto.getVehicleID());
+        }
+        return createAndSendResponse(HttpStatus.OK.value(), "Hotel SuccessFull Delete!",null);
     }
 
 
     @Override
     public ResponseEntity<Response> delete(String id) {
-        if(search(id).getBody().getData()!=null){
-            vehicleRepo.deleteById(id);
-            return createAndSendResponse(HttpStatus.OK.value(),"Sucess delete vehi",null);
+        if(search(id).getBody().getData() == null){
+            return createAndSendResponse(HttpStatus.NOT_FOUND.value(),"Not Found Vehicle",null);
         }
-        throw new RuntimeException("Not found!!!!");
+        vehicleRepo.deleteById(id);
+        System.out.println("service delete");
+        return createAndSendResponse(HttpStatus.OK.value(), "Vehicle Suceesfully Dlete",null);
     }
 
     @Override
