@@ -8,6 +8,7 @@ public class UploadServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(UploadServerApplication.class, args);
+        System.out.println("UPLOAD IMAGE SERVER RUNNING ");
     }
 
 }
