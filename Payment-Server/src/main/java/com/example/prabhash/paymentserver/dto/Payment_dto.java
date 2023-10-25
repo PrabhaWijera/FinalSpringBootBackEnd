@@ -16,4 +16,6 @@ public class Payment_dto implements Serializable, SuperDto {
     private String MIncome;
     private String WIncome;
 
+    private String packageId;
+
 }

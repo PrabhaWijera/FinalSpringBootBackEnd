@@ -44,7 +44,7 @@ public class Guide_dto implements Serializable, SuperDto {
 
 
 
-
+    private String packageId;
 
 
 

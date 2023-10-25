@@ -21,6 +21,8 @@ public class Guide_entity {
 
     private String guideName;
 
+    private String packageId;
+
     private String guideAddress;
 
     private String guideAge;

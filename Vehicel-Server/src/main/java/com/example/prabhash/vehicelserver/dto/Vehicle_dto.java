@@ -16,6 +16,8 @@ public class Vehicle_dto implements Serializable,SuperDto{
 
     private String vehicleID;
 
+    private String packageId;
+
     private String vehicleBrand;
     private String vehicleName;
     private String vehicleCategory;

@@ -22,4 +22,6 @@ public class Payment_entity {
     private String MIncome;
     private String WIncome;
 
+    private String packageId;
+
 }
