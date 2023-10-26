@@ -7,16 +7,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
-@Entity
+@Document
 public class Guide_entity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @MongoId
+//    @GeneratedValue(strategy = GenerationType.UUID)
     private String guideID;
 
     private String guideName;

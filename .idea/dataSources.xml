@@ -22,13 +22,6 @@
       <jdbc-url>jdbc:mysql://localhost:3306/springboot_FinalAADUserDB</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="springboot_assigmentFinalPackageDBGuide@localhost" uuid="c97f83cf-82fc-41ad-9dde-4976ec4eee7b">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBGuide</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="springboot_assigmentFinalPackageDBVehicle@localhost" uuid="b1da2581-f9f7-4b4a-858f-544768c2a5ec">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
