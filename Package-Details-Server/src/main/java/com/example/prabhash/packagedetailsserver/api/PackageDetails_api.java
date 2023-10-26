@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:8080")
-@RequestMapping("packageDetals")
+@RequestMapping("api/v1/packageDetals")
 @RestController
 public class PackageDetails_api {
 
