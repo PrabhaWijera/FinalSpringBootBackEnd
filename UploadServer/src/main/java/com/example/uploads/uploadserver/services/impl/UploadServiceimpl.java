@@ -27,7 +27,7 @@ public class UploadServiceimpl implements UploadService {
         String fileName = imageFile.getOriginalFilename();
 
         // Specify the destination directory.In this case it is downloads.
-        String destinationDirectory = System.getProperty("user.home") + "/Downloads";
+        String destinationDirectory = System.getProperty("user.home") + "/Desktop";
         // Create the directory if it doesn't exist.
         File directory = new File(destinationDirectory);
         if (!directory.exists()) {
