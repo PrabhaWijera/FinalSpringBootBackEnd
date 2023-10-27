@@ -46,7 +46,7 @@ public class UploadServiceimpl implements UploadService {
         }
 
     }
-
+/*
     @Override
     public String handlePuting(MultipartFile imagefileupdateed) {
         String fileName2 = imagefileupdateed.getOriginalFilename();
@@ -69,7 +69,7 @@ public class UploadServiceimpl implements UploadService {
         } catch (IOException e) {
             throw new RuntimeException("An error occurred while saving the image :" + e.getLocalizedMessage());
         }
-    }
+    }*/
 
     @Override
     public ResponseEntity<Resource> getImage(String imagePath)  {
