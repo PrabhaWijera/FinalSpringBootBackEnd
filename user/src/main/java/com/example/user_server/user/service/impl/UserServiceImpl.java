@@ -44,8 +44,10 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<UserEntity> user = userRepo.findByUserName(username);
-        System.out.println(createAndSendResponse(HttpStatus.OK.value(), "ok",null));
+        ResponseEntity<Response> andSendResponse = createAndSendResponse(HttpStatus.OK.value(), "Successfully !", user);
+        System.out.println(andSendResponse+"and res&send ");
         return user.isPresent() ? user.get() : user.orElseThrow(() -> new UsernameNotFoundException("User not found!"));
+
     }
 
     @Override
