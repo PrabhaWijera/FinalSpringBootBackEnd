@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             userRepo.save(mapper.map(userDTO, UserEntity.class));
             HashMap<String,Object> userRoles= new HashMap<>();
             userRoles.put("userRole",userDTO.getUserRole());
-            return createAndSendResponse(HttpStatus.CREATED.value(), "User Successfully saved and JWT successfully generated!", jwtService.generateToken(userRoles,mapper.map(userDTO, UserEntity.class)));
+            return createAndSendResponse(HttpStatus.OK.value(), "User Successfully saved and JWT successfully generated!", jwtService.generateToken(userRoles,mapper.map(userDTO, UserEntity.class)));
 
         }
 
@@ -67,14 +67,20 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Override
     public ResponseEntity<Response> update(User_dto userDTO) {
-        if (search(userDTO.getUserId()).getBody().getData() == null) {
-            return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "User not found!", null);
+        Optional<UserEntity> existingUser = userRepo.findById(userDTO.getUserId());
 
+        if (existingUser.isPresent()) {
+            // The vehicle with the given ID exists, so update it
+            UserEntity updatedEntity = mapper.map(userDTO, UserEntity.class);
+            updatedEntity.setUserId(userDTO.getUserId()); // Set the ID to ensure an update
+            userRepo.save(updatedEntity);
+            return createAndSendResponse(HttpStatus.OK.value(), "User updated successfully",null);
+        } else {
+            // The vehicle with the given ID does not exist, so create a new entry
+            UserEntity newEntity = mapper.map(userDTO, UserEntity.class);
+            userRepo.save(newEntity);
+            return createAndSendResponse(HttpStatus.OK.value(), "User created successfully",null );
         }
-        userRepo.save(mapper.map(userDTO, UserEntity.class));
-        return createAndSendResponse(HttpStatus.OK.value(), "User successfully updated!", null);
-
-
     }
 
     @Override
@@ -102,18 +108,15 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Override
     public ResponseEntity<Response> getAll() {
-        List<UserEntity> users = userRepo.findAll();
-        if (users.isEmpty()) {
-            return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Users not found!", null);
-
+        List<UserEntity> userEntities=userRepo.findAll();
+        if (!userEntities.isEmpty()){
+            List<User_dto>userDtos=new ArrayList<>();
+            userEntities.forEach(UserEn -> {
+                userDtos.add(mapper.map(UserEn,User_dto.class));
+            });
+            return createAndSendResponse(HttpStatus.OK.value(),"Success User",userDtos);
         }
-        List<User_dto> usersList = new ArrayList<>();
-        users.forEach((user) -> {
-            usersList.add(mapper.map(user, User_dto.class));
-
-        });
-        return createAndSendResponse(HttpStatus.OK.value(), "Users successfully retrieved!", usersList);
-
+        return createAndSendResponse(HttpStatus.NOT_FOUND.value(),"No success",null);
     }
 
     @Override
