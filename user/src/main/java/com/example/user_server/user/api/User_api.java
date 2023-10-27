@@ -19,6 +19,7 @@ public class User_api {
 
     @GetMapping(path = "/getUserByUserName", produces = MediaType.APPLICATION_JSON_VALUE, params = {"username", "password"})
     public ResponseEntity<Response> getUserByUserName(@RequestParam("username") String username, @RequestParam("password") String password) {
+        System.out.println("-------------------------------------------");
         return userService.getUserByUserName(username, password);
 
     }
