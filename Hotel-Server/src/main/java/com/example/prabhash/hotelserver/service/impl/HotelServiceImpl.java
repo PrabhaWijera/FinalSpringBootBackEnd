@@ -46,20 +46,20 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public ResponseEntity<Response> update(Hotel_dto hotelDTO) {
-        if (search(hotelDTO.getHotelId()).getBody().getData() == null) {
-            return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Hotel Not Found!", null);
+        Optional<Hotel_entity> existinghotel = hotelRepo.findById(hotelDTO.getHotelId());
 
+        if (existinghotel.isPresent()) {
+            // The vehicle with the given ID exists, so update it
+            Hotel_entity updatedEntity = mapper.map(hotelDTO, Hotel_entity.class);
+            updatedEntity.setHotelId(hotelDTO.getHotelId()); // Set the ID to ensure an update
+            hotelRepo.save(updatedEntity);
+            return createAndSendResponse(HttpStatus.OK.value(), "hotel updated successfully",null);
+        } else {
+            // The vehicle with the given ID does not exist, so create a new entry
+            Hotel_entity newEntity = mapper.map(hotelDTO, Hotel_entity.class);
+            hotelRepo.save(newEntity);
+            return createAndSendResponse(HttpStatus.OK.value(), "Hotel created successfully",null );
         }
-        Optional<Hotel_entity> hotelDto = hotelRepo.findById(hotelDTO.getHotelId());
-        if (hotelDto.isPresent()) {
-            packageInterface.updateHotelPackageId(hotelDto.get().getPackageId(), hotelDTO.getPackageId(), hotelDTO.getHotelId());
-            hotelRepo.save(mapper.map(hotelDTO, Hotel_entity.class));
-
-
-        }
-        return createAndSendResponse(HttpStatus.OK.value(), "Hotel Successfully updated!", null);
-
-
     }
 
     @Override
