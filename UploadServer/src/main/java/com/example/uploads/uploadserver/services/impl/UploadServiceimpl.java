@@ -46,6 +46,31 @@ public class UploadServiceimpl implements UploadService {
         }
 
     }
+
+    @Override
+    public String handlePuting(MultipartFile imagefileupdateed) {
+        String fileName2 = imagefileupdateed.getOriginalFilename();
+
+        // Specify the destination directory.In this case it is downloads.
+        String destinationDirectory = System.getProperty("user.home") + "/Desktop";
+        // Create the directory if it doesn't exist.
+        File directory = new File(destinationDirectory);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
+        // Create the file path.
+        String filePath = destinationDirectory + "/" + fileName2;
+
+        // Save the image file.
+        try {
+            imagefileupdateed.transferTo(Paths.get(filePath));
+            return filePath;
+        } catch (IOException e) {
+            throw new RuntimeException("An error occurred while saving the image :" + e.getLocalizedMessage());
+        }
+    }
+
     @Override
     public ResponseEntity<Resource> getImage(String imagePath)  {
         File file = new File(imagePath);

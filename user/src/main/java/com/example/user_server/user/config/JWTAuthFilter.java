@@ -59,7 +59,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
             UserDetails user = userDetailsService.loadUserByUsername(userName);
             System.out.println("User : " + user.toString());
 
-            if (JWTService.validateToken(jwtToken, user) && JWTService.getUserRole(jwtToken).equals("user") || JWTService.getUserRole(jwtToken).equals("userAdmin") || JWTService.getUserRole(jwtToken).equals("packageDetailsAdmin") || JWTService.getUserRole(jwtToken).equals("paymentsAdmin") || JWTService.getUserRole(jwtToken).equals("A_GUIDE") || JWTService.getUserRole(jwtToken).equals("A_VEHICLE") || JWTService.getUserRole(jwtToken).equals("A_HOTEL")) {
+            if (JWTService.validateToken(jwtToken, user) && JWTService.getUserRole(jwtToken).equals("user") || JWTService.getUserRole(jwtToken).equals("AD_USER") || JWTService.getUserRole(jwtToken).equals("packageDetailsAdmin") || JWTService.getUserRole(jwtToken).equals("paymentsAdmin") || JWTService.getUserRole(jwtToken).equals("A_GUIDE") || JWTService.getUserRole(jwtToken).equals("A_VEHICLE") || JWTService.getUserRole(jwtToken).equals("A_HOTEL")) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
                 System.out.println("auth status: " + authToken.isAuthenticated());
                 System.out.println("Here is user role : " + JWTService.getUserRole(jwtToken));

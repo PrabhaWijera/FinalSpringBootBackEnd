@@ -43,5 +43,11 @@ public class User_api {
     }
 
 
+    @GetMapping(path = "U_searching",params = "userId",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity <Response> get(@RequestParam("userId") String userId){
+        System.out.println("user search"+userId);
+        return userService.search(userId);
+    }
+
 
 }

@@ -28,6 +28,15 @@ public class UploadController {
 
     }
 
+    @PutMapping(path = "/putMethod", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String handlePuting(@RequestParam("imageFile") MultipartFile imageFile) {
+
+        System.out.println("Download updated!!!!");
+        return uploadService.handleUploads(imageFile);
+
+
+    }
+
     @GetMapping(path = "/getImage",params = "imagePath")
     public ResponseEntity<Resource> getImage(@RequestParam("imagePath") String imagePath) {
         System.out.println("Uploaded!!!!");
