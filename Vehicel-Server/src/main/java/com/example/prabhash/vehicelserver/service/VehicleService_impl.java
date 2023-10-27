@@ -57,7 +57,7 @@ public class VehicleService_impl implements VehicleService {
 
     @Override
     public ResponseEntity<Response> update(Vehicle_dto vehicleDto) {
-     /*   Optional<Vehicle_entity> existingVehicle = vehicleRepo.findById(vehicleDto.getVehicleID());
+        Optional<Vehicle_entity> existingVehicle = vehicleRepo.findById(vehicleDto.getVehicleID());
 
         if (existingVehicle.isPresent()) {
             // The vehicle with the given ID exists, so update it
@@ -70,15 +70,7 @@ public class VehicleService_impl implements VehicleService {
             Vehicle_entity newEntity = modelMapper.map(vehicleDto, Vehicle_entity.class);
             vehicleRepo.save(newEntity);
             return createAndSendResponse(HttpStatus.OK.value(), "Vehicle created successfully",null );
-        }*/
-        if (search(vehicleDto.getVehicleID()).getBody().getData() == null){
-            return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Vehicle not found!!!",null);
         }
-        Optional<Vehicle_entity> vehicleEntity =vehicleRepo.findById(vehicleDto.getVehicleID());
-        if (vehicleEntity.isPresent()){
-            packageInterface.updateVehiclePackageId(vehicleEntity.get().getPackage_id(),vehicleDto.getPackageId(),vehicleDto.getVehicleID());
-        }
-        return createAndSendResponse(HttpStatus.OK.value(), "Hotel SuccessFull Delete!",null);
     }
 
 
