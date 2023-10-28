@@ -48,7 +48,7 @@ public class PackageDetails_dto implements Serializable, SuperDTO {
 
     private double TotalPackageValue;
 
-    private int userID;
+    private String userID;
 
     private double packagePaidValue;
 

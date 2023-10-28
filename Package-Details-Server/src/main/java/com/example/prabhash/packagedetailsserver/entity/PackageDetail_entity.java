@@ -58,7 +58,7 @@ public class PackageDetail_entity {
 
     private double TotalPackageValue;
 
-    private int userID;
+    private String userID;
 
     private double packagePaidValue;
 
