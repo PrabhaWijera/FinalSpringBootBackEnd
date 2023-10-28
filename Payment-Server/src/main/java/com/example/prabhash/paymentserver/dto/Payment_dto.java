@@ -11,11 +11,10 @@ import java.io.Serializable;
 public class Payment_dto implements Serializable, SuperDto {
 
     private String payID;
-    private String DIncome;
-    private String AIncome;
-    private String MIncome;
-    private String WIncome;
-
-    private String packageId;
+    private String userID;
+    private String packageDetailsID;
+    private String paymentDate;
+    private double paymentAmount;
+    private String paymentImageLocation;
 
 }

@@ -17,11 +17,17 @@ public class Payment_entity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String payID;
-    private String DIncome;
+    private String userID;
+    private String packageDetailsID;
+    private String paymentDate;
+    private double paymentAmount;
+    private String paymentImageLocation;
+
+/*    private String DIncome;
     private String AIncome;
     private String MIncome;
-    private String WIncome;
+    private String WIncome;*/
 
-    private String packageId;
+
 
 }

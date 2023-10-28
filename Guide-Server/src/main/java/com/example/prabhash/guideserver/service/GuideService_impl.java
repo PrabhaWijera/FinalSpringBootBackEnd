@@ -58,12 +58,12 @@ public class GuideService_impl implements GuideService {
             Guide_entity updatedEntity = modelMapper.map(guideDto, Guide_entity.class);
             updatedEntity.setGuideID(guideDto.getGuideID()); // Set the ID to ensure an update
             guideRepo.save(updatedEntity);
-            return createAndSendResponse(HttpStatus.OK.value(), "Vehicle updated successfully",null);
+            return createAndSendResponse(HttpStatus.OK.value(), "Guide updated successfully",null);
         } else {
             // The vehicle with the given ID does not exist, so create a new entry
             Guide_entity newEntity = modelMapper.map(guideDto, Guide_entity.class);
             guideRepo.save(newEntity);
-            return createAndSendResponse(HttpStatus.OK.value(), "Vehicle created successfully",null );
+            return createAndSendResponse(HttpStatus.OK.value(), "Guide created successfully",null );
         }
     }
     @Override

@@ -109,6 +109,46 @@ PACKAGE
 eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyUm9sZSI6IkFfUEFDS0FHRSIsInN1YiI6InBhY2thZ2UyMDAxIiwiaWF0IjoxNjk4MjE4MTgzLCJleHAiOjQ4NTE4MTgxODN9.M4bzixa7mGlo-mmyhasByViBgMooTU_t5T4YvAyzmh0
 
 
+
+PackageDetails
+
+{
+    "userRole": "PACKAGE_DETAILS",
+    "userId": "pckge001",
+    "name": "packageDetailsadmin",
+    "userName": "packageDetailsadmin2001",
+    "userPassword": "2001",
+    "userNIC": "987654321",
+    "userNICImageLocation": "https://example.com/payment-nic-image.jpg",
+    "userAge": 35,
+    "gender":"MALE",
+    "userEmail": "soap@example.com",
+    "userPhone": "555-123-4567",
+    "userAddress": "456 Maple Street, Payment City, Payment Country",
+    "remarks": "Experienced payment administrator with a strong financial background.",
+    "userImageLocation": "https://example.com/sarah-image.jpg",
+    "isAuthenticated": false
+}
+
+
+
+
+
+
+
+
+
+
+eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyUm9sZSI6IlBBQ0tBR0VfREVUQUlMUyIsInN1YiI6InBhY2thZ2VEZXRhaWxzYWRtaW4yMDAxIiwiaWF0IjoxNjk4NDY3MjQyLCJleHAiOjQ4NTIwNjcyNDJ9.iJmDyxXpcXihXCGqjv0S13WaFEku7zE_XQBr6LMKXXU
+
+
+
+
+
+
+
+
+
 ADMin USER
 
 {

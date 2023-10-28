@@ -36,54 +36,70 @@ public class PackageDetails_impl implements PackageDetailsService {
     public ResponseEntity<Response> search(String id) {
         Optional<PackageDetail_entity> packageDetailEntity=packageDetails_repo.findById(id);
         if (packageDetailEntity.isPresent()){
-            return createAndSendResponse(HttpStatus.FOUND.value(),"Sucess", modelMapper.map(packageDetailEntity.get(),PackageDetails_dto.class));
+            return createAndSendResponse(HttpStatus.OK.value(),"Success search packageDetails", modelMapper.map(packageDetailEntity.get(),PackageDetails_dto.class));
         }
-        return createAndSendResponse(HttpStatus.NOT_EXTENDED.value(), null,"No foound PackageDetaisl");
+        return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "No found PackageDetail",null);
     }
 
     @Override
     public ResponseEntity<Response> save(PackageDetails_dto packageDetailsDto) {
-        if (search(String.valueOf(packageDetailsDto.getPackageID())).getBody().getData()==null){
+        if (search(packageDetailsDto.getPackageDetailsID()).getBody().getData()==null){
             packageDetails_repo.save(modelMapper.map(packageDetailsDto,PackageDetail_entity.class));
-            return createAndSendResponse(HttpStatus.OK.value(), "Sucess",null);
+            return createAndSendResponse(HttpStatus.OK.value(), "Success",null);
         }
-        throw new RuntimeException("No save packageDetails");
+        throw new RuntimeException("No save Guides");
     }
 
     @Override
     public ResponseEntity<Response> update(PackageDetails_dto packageDetailsDto) {
-        if (search(String.valueOf(packageDetailsDto.getPackageID())).getBody().getData()!=null){
-            packageDetails_repo.save(modelMapper.map(packageDetailsDto,PackageDetail_entity.class));
-            return createAndSendResponse(HttpStatus.OK.value(),"success",null);
+        Optional<PackageDetail_entity> existingPackageDetail = packageDetails_repo.findById(packageDetailsDto.getPackageDetailsID());
+
+        if (existingPackageDetail.isPresent()) {
+            // The vehicle with the given ID exists, so update it
+            PackageDetail_entity updatedEntity = modelMapper.map(packageDetailsDto, PackageDetail_entity.class);
+            updatedEntity.setPackageDetailsID(packageDetailsDto.getPackageDetailsID()); // Set the ID to ensure an update
+            packageDetails_repo.save(updatedEntity);
+            return createAndSendResponse(HttpStatus.OK.value(), "PackageDetails updated successfully",null);
+        } else {
+            // The vehicle with the given ID does not exist, so create a new entry
+            PackageDetail_entity newEntity = modelMapper.map(packageDetailsDto, PackageDetail_entity.class);
+            packageDetails_repo.save(newEntity);
+            return createAndSendResponse(HttpStatus.OK.value(), "PackageDetails created successfully",null );
         }
-        throw new RuntimeException("packagedetails no update");
     }
 
     @Override
     public ResponseEntity<Response> delete(String id) {
-        if (search(id).getBody().getData()!=null){
-            packageDetails_repo.deleteById(id);
-           return createAndSendResponse(HttpStatus.OK.value(), "Delete success",null);
+        if (search(id).getBody().getData() == null){
+            return createAndSendResponse(HttpStatus.NOT_FOUND.value(),"NOT Found Packages ",null);
         }
-        throw new RuntimeException("NOT delete by id packagedetails");
+        packageDetails_repo.deleteById(id);
+        return createAndSendResponse(HttpStatus.OK.value(), "Package Delete SuccessFully",null);
     }
 
     @Override
     public ResponseEntity<Response> getAll() {
         List<PackageDetail_entity>packageDetailEntities=packageDetails_repo.findAll();
-        if (packageDetailEntities.isEmpty()){
-            ArrayList<PackageDetails_dto>packageDetailsDtos=new ArrayList<>();
+        if (!packageDetailEntities.isEmpty()){
+             List<PackageDetails_dto>packageDetailsDtos=new ArrayList<>();
             packageDetailEntities.forEach(packageDetailEntity -> {
                 packageDetailsDtos.add(modelMapper.map(packageDetailEntity,PackageDetails_dto.class));
             });
-            return createAndSendResponse(HttpStatus.OK.value(), "Sucess get All packagedetails",null);
+            return createAndSendResponse(HttpStatus.OK.value(), "Success get All package details",null);
         }
-        throw new RuntimeException("no get allpackagedetails");
+        return createAndSendResponse(HttpStatus.NOT_FOUND.value(),"No success",null);
     }
 
     @Override
     public ResponseEntity<Response> createAndSendResponse(int statusCode, String msg, Object data) {
-        return null;
+        response.setStatusCode(statusCode);
+        response.setMessage(msg);
+        response.setData(data);
+        System.out.println("Status Code : " + statusCode);
+        System.out.println("Sent : " + HttpStatus.valueOf(statusCode));
+
+        return new ResponseEntity<Response>(response, HttpStatusCode.valueOf(statusCode));
+
     }
 
 
