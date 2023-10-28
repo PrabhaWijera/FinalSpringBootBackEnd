@@ -10,4 +10,6 @@ import java.util.Optional;
 @Repository
 public interface GuideRepo extends MongoRepository<Guide_entity,String> {
     Optional<Guide_entity> findByGuideName(String guideName);
+
+
 }

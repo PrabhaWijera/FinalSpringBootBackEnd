@@ -29,6 +29,7 @@ public class PackageDetail_entity {
     private String packageCategory;
 
     private int hotelID;
+
     private int vehicleID;
 
     private Date startDuration;
@@ -53,9 +54,13 @@ public class PackageDetail_entity {
 
     private String guideID;
 
+    private String NameGuide;
+
     private double TotalPackageValue;
 
     private int userID;
+
     private double packagePaidValue;
+
     private String remark;
 }

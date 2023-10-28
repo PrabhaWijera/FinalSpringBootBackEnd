@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface GuideService extends SuperService<Guide_dto,String> {
 
-
     ResponseEntity<Response> deleteAllGuides(List<String> guideID);
+
+
+
 }

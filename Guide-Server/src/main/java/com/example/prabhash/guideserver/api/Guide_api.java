@@ -2,15 +2,18 @@ package com.example.prabhash.guideserver.api;
 
 
 import com.example.prabhash.guideserver.dto.Guide_dto;
+import com.example.prabhash.guideserver.entity.Guide_entity;
 import com.example.prabhash.guideserver.fiegn.Packageinterface;
 import com.example.prabhash.guideserver.res.Response;
 import com.example.prabhash.guideserver.service.custom.GuideService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin
 @RestController
@@ -31,7 +34,9 @@ public class Guide_api {
 
    }
 
-   @GetMapping(path = "Gget",params = "guideID",produces = MediaType.APPLICATION_JSON_VALUE)
+
+
+    @GetMapping(path = "Gget",params = "guideID",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity <Response> get(@RequestParam("guideID") String guideID){
        System.out.println("Guide search"+guideID);
      return guideService.search(guideID);
@@ -65,6 +70,9 @@ public class Guide_api {
     public ResponseEntity<Response>deleteAllGuides(@RequestBody List<String> guideID){
        return guideService.deleteAllGuides(guideID);
     }
+
+
+
 
 
 

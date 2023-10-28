@@ -29,7 +29,7 @@ public class PackageDetails_dto implements Serializable, SuperDTO {
     private Date endDuration;
 
 
-
+    private String NameGuide;
     private int noOfDays;
 
     private String travelArea;
