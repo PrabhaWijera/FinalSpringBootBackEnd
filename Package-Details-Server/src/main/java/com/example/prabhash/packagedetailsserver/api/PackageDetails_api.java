@@ -89,4 +89,9 @@ public class PackageDetails_api {
     public ResponseEntity<Response>updateHotelPackageId(@RequestParam("oldPackageId")String oldPackageId,@RequestParam("newPackageId")String newPackageId,@RequestParam("hotelId")String hotelId) {
     return null;
     }
+
+
+
+
+
 }
