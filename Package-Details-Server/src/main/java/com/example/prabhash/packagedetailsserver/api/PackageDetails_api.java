@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RequestMapping("api/v1/packageDetals")
 @RestController
@@ -52,6 +54,15 @@ public class PackageDetails_api {
         // Return the data as a response
         return packageDetailsService.getAll();
     }
+//get package ID
+    @GetMapping(path = "/allIDs",produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Integer> getAllIDs(){
+        return packageDetailsService.getAllID();
+    }
+
+
+
+
 
     //others
 

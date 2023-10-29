@@ -30,10 +30,12 @@ public class Hotel_entity {
     private String hotelContact1;
     private String hotelContact2;
     private boolean isPetsAllowed;
+
     private double fullBoardWithACLuxuryRoomDouble;
     private double halfBoardWithACLuxuryRoomDouble;
     private double fullBoardWithACLuxuryRoomTriple;
     private double halfBoardWithACLuxuryRoomTriple;
+
     private double hotelFee;
     private String cancellationCriteria;
     private String remarks;

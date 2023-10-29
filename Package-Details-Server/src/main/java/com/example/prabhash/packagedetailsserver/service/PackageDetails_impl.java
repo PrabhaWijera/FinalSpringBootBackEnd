@@ -102,5 +102,11 @@ public class PackageDetails_impl implements PackageDetailsService {
 
     }
 
+    public List<Integer>getAllID(){
+        List<Integer> allIDs= packageDetails_repo.getAllID();
+        System.out.println(allIDs);
+        return allIDs;
+    }
+
 
 }

@@ -40,6 +40,7 @@ public class PackageDetail_entity {
 
     private int noOfDays;
 
+
     private String travelArea;
 
     private int noOfAdults;

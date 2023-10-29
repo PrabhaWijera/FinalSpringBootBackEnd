@@ -131,4 +131,11 @@ public class PackageService_impl implements PackageService {
         // If creation is successful, return a success response
         return new ResponseEntity<>("Success", HttpStatus.CREATED);
     }
+
+    @Override
+    public List<Integer> getAllID() {
+        List<Integer> allIDs= packageRepo.getAllID();
+        System.out.println(allIDs);
+        return allIDs;
+    }
 }
