@@ -41,18 +41,27 @@ public class PaymentService_impl implements PaymentService {
     public ResponseEntity<Response> save(Payment_dto paymentDto) {
         if (search(paymentDto.getPayID()).getBody().getData()==null){
             paymentRepo.save(modelMapper.map(paymentDto,Payment_entity.class));
-            return createAndSendResponse(HttpStatus.OK.value(),"save ok pa",null);
+            return createAndSendResponse(HttpStatus.OK.value(),"save ok payment",null);
         }
-        throw new RuntimeException("pay save not ok");
+        throw new RuntimeException("payment save not ok");
     }
 
     @Override
     public ResponseEntity<Response> update(Payment_dto paymentDto) {
-        if (search(paymentDto.getPayID()).getBody().getData()!=null){
-            paymentRepo.save(modelMapper.map(paymentDto,Payment_entity.class));
-            return createAndSendResponse(HttpStatus.FOUND.value(),"update payment",null);
+        Optional<Payment_entity> existingPyment = paymentRepo.findById(paymentDto.getPayID());
+
+        if (existingPyment.isPresent()) {
+            // The vehicle with the given ID exists, so update it
+            Payment_entity updatedEntity = modelMapper.map(paymentDto, Payment_entity.class);
+            updatedEntity.setPayID(paymentDto.getPayID()); // Set the ID to ensure an update
+            paymentRepo.save(updatedEntity);
+            return createAndSendResponse(HttpStatus.OK.value(), "Payment updated successfully",null);
+        } else {
+            // The vehicle with the given ID does not exist, so create a new entry
+            Payment_entity newEntity = modelMapper.map(paymentDto, Payment_entity.class);
+            paymentRepo.save(newEntity);
+            return createAndSendResponse(HttpStatus.OK.value(), "Payment created successfully",null );
         }
-        throw new RuntimeException(" no update payment");
     }
 
     @Override
@@ -66,15 +75,15 @@ public class PaymentService_impl implements PaymentService {
 
     @Override
     public ResponseEntity<Response> getAll() {
-         List<Payment_entity> paymentEntityList=paymentRepo.findAll();
-         if (!paymentEntityList.isEmpty()){
-             ArrayList<Payment_dto> paymentDtos=new ArrayList<>();
-             paymentEntityList.forEach(paymentEntity -> {
-                 paymentDtos.add(modelMapper.map(paymentEntity,Payment_dto.class));
-             });
-             return createAndSendResponse(HttpStatus.OK.value(), "found all ok",null);
-         }
-         throw new RuntimeException("not work get all payment");
+        List<Payment_entity>payEntities=paymentRepo.findAll();
+        if (!payEntities.isEmpty()){
+            List<Payment_dto>payDtos=new ArrayList<>();
+            payEntities.forEach(payEntity -> {
+                payDtos.add(modelMapper.map(payEntity,Payment_dto.class));
+            });
+            return createAndSendResponse(HttpStatus.OK.value(),"Success Guide",payDtos);
+        }
+        return createAndSendResponse(HttpStatus.NOT_FOUND.value(),"No success",null);
 
     }
 

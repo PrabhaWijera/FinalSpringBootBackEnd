@@ -43,5 +43,10 @@ public class Payment_api {
     }
 
 
+    @GetMapping(path = "/getAllPayments",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity <Response> getAllPayments() {
+        // Return the data as a response
+        return paymentService.getAll();
+    }
 
 }
