@@ -16,6 +16,7 @@ public class Payment_entity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+
     private String payID;
     private String userID;
     private String packageDetailsID;
