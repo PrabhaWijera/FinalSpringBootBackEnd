@@ -1,5 +1,6 @@
 package com.example.packageserver.package_server.dto;
 
+import jakarta.persistence.ElementCollection;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +21,8 @@ public class Package_dto implements Serializable,Super_dto{
 
     private String packageCategory;
 
-    private String  vehical_Category;
+    private  String vehical_Category;
+
 
     private String hotel_Category;
 

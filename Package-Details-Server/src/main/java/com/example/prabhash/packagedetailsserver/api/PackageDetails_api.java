@@ -59,11 +59,6 @@ public class PackageDetails_api {
     public List<Integer> getAllIDs(){
         return packageDetailsService.getAllID();
     }
-
-
-
-
-
     //others
 
     @PostMapping(path = "/saveHotelID",produces = MediaType.APPLICATION_JSON_VALUE,params = {"packageID","hotelID"})
