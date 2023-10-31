@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/v1/package_server")
+@RequestMapping("api/v1/package_server")
 public class Package {
     Package(){
         System.out.println("Package_api_working_on!!!");
