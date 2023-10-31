@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient("vehicle-server")
+@FeignClient("vehicle-service")
+
 public interface VehicleInterface {
     @DeleteMapping(path = "/deleteAll", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response> deleteAllVehicles(@RequestBody List<String> vehiclesIDList);

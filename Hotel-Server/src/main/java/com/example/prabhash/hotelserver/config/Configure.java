@@ -11,6 +11,7 @@ public class Configure {
     public ModelMapper modelMapper(){
         return new ModelMapper();
     }
+
     @Bean
     public RequestInterceptor requestInterceptor() {
         return requestTemplate -> {

@@ -32,6 +32,7 @@ public class HotelServiceImpl implements HotelService {
     private PackageInterface packageInterface;
 
 
+
     @Override
     public ResponseEntity<Response> add(Hotel_dto hotelDTO) {
         if (search(hotelDTO.getHotelId()).getBody().getData() == null) {
@@ -39,10 +40,11 @@ public class HotelServiceImpl implements HotelService {
             Hotel_dto dto = (Hotel_dto) findByHotelName(hotelDTO.getHotelName()).getBody().getData();
             packageInterface.saveHotelID(hotelDTO.getPackageId(), dto.getHotelId());
             return createAndSendResponse(HttpStatus.CREATED.value(), "Hotel Successfully saved!", true);
-
         }
         return createAndSendResponse(HttpStatus.CONFLICT.value(), "Hotel Already Exists!", false);
     }
+
+
 
     @Override
     public ResponseEntity<Response> update(Hotel_dto hotelDTO) {

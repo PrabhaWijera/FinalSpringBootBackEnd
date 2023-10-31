@@ -28,6 +28,7 @@ public class PackageController {
     public ResponseEntity<Response> saveHotelID(@RequestParam("packageID") String packageID, @RequestParam("hotelID") String hotelID){
         return packageService.addHotel(packageID,hotelID);
     }
+
     @PostMapping(path = "/saveVehicleID",produces = MediaType.APPLICATION_JSON_VALUE,params = {"packageID","vehicleID"})
     public ResponseEntity<Response> saveVehicleID(@RequestParam("packageID") String packageID, @RequestParam("vehicleID") String vehicleID){
         return packageService.addVehicle(packageID, vehicleID);

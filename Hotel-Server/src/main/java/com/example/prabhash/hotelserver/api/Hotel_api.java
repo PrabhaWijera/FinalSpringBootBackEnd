@@ -32,6 +32,7 @@ public class Hotel_api {
     @PostMapping(path = "h_save",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response>save( @RequestBody Hotel_dto hotelDto){
         System.out.println("Hotel save working");
+        System.out.println("pk id"+hotelDto.getPackageId());
         return hotelService.add(hotelDto);
     }
 
@@ -66,7 +67,6 @@ public class Hotel_api {
     public ResponseEntity<Response> search(@RequestParam("H_ID") String H_ID){
         return hotelService.search(H_ID);
     }
-
 
 
 

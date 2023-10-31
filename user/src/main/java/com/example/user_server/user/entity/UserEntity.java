@@ -25,7 +25,6 @@ public class UserEntity implements UserDetails ,SuperEntity{
     private String userRole;
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-
     private String userId;
 
     private String name;

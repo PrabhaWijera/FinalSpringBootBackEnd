@@ -48,10 +48,13 @@ public class VehicleService_impl implements VehicleService {
     public ResponseEntity<Response> save(Vehicle_dto vehicleDto) {
         if (search(vehicleDto.getVehicleID()).getBody().getData()==null){
                vehicleRepo.save(modelMapper.map(vehicleDto,Vehicle_entity.class));
-            return createAndSendResponse(HttpStatus.OK.value(),"save ok vehicle",null);
+               Vehicle_dto dto= (Vehicle_dto) findByVehicleName(vehicleDto.getVehicleName()).getBody().getData();
+               packageInterface.saveVehicleID(vehicleDto.getPackageId(),dto.getVehicleID());
+            return createAndSendResponse(HttpStatus.CREATED.value(),"save ok vehicle",true);
         }
-        throw new RuntimeException("Vehicale save not ok");
+        return createAndSendResponse(HttpStatus.CONFLICT.value(), "Hotel Already Exists!", false);
     }
+
 
 
 
