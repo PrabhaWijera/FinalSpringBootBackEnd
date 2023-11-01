@@ -12,6 +12,7 @@
         <module name="API-gateway" />
         <module name="Vehicel-Server" />
         <module name="Hotel-Server" />
+        <module name="EmailService" />
         <module name="user_server" />
         <module name="Payment-Server" />
         <module name="UploadServer" />
@@ -28,6 +29,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="API-gateway" options="-parameters" />
       <module name="Driver_server" options="-parameters" />
+      <module name="EmailService" options="-parameters" />
       <module name="Guide-Server" options="-parameters" />
       <module name="Hotel-Server" options="-parameters" />
       <module name="Package-Details-Server" options="-parameters" />
