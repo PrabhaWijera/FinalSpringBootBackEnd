@@ -17,6 +17,7 @@ import java.util.Date;
 @Data
 
 public class PackageDetailsDTO implements Serializable {
+/*
     @Valid
     private String packageDetailsId;
     @NotNull(message = "Package Id cannot be null.")
@@ -60,6 +61,15 @@ public class PackageDetailsDTO implements Serializable {
     private String remarks;
     private String name;
     private String email;
+*/
 
+private String ownerFullName;
+    private String OwnerEmail;
+    private String OwnerCardNumber;
+    private String paymentDate;
+    private String paymentAmount;
+
+    private String name;
+    private String email;
 
 }

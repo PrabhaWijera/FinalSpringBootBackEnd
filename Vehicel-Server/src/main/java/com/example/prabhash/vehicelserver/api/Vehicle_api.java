@@ -36,7 +36,7 @@ public class Vehicle_api {
 
     @PostMapping(path = "vSave",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response> save(@RequestBody Vehicle_dto vehicleDto){
-        System.out.println("vehicle save working");
+        System.out.println("vehicle save working"+vehicleDto.getFee_forDay());
        return vehicleService.save(vehicleDto);
     }
 

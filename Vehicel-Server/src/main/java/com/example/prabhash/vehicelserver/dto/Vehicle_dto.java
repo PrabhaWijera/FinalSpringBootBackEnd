@@ -19,7 +19,11 @@ public class Vehicle_dto implements Serializable,SuperDto{
     private String packageId;
 
     private String vehicleBrand;
+
+
+
     private String vehicleName;
+
     private String vehicleCategory;
 
     private String fuelType;
@@ -33,7 +37,7 @@ public class Vehicle_dto implements Serializable,SuperDto{
 
     private String vehicleInteriorImg;
 
-
+    private String fee_forDay;
 
     private String seatCapacity;
 

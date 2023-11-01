@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmailService {
+
     @Autowired
     private JavaMailSender mailSender;
     @Autowired
@@ -28,9 +29,9 @@ public class EmailService {
     public ResponseEntity<Response> sendEmail(EmailDetails email) {
         System.out.println("Sending Email to: " + email.getToEmail());
         String otp = generateAndSaveOtp(email.getToEmail());
-        String body = "Dear " + email.getName() + ",\n\n" + "Welcome aboard!.\n\n" +  "\n\n" + "Use the OTP below to complete your signup:\n" + otp + "\n\n" + "Regards,\n" + "Damian Peiris - Team NextTravel.";
+        String body = "Dear " + email.getName() + ",\n\n" + "Welcome aboard!.\n\n" +  "\n\n" + "Use the OTP below to complete your signup:\n" + otp + "\n\n" + "Regards,\n" + "Prabhash Wijerathna - Team NextTravel.";
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("drpeiris3.edu@gmail.com");
+        message.setFrom("prabhashwijerathna2001@gmail.com");
         message.setTo(email.getToEmail());
         message.setText(body);
         message.setSubject("NextTravel - Welcome Aboard!");
@@ -46,30 +47,18 @@ public class EmailService {
         String body = "Dear " + packageDetails.getName() + ",\n\n" +
                 "Thank you for booking with us!\n\n" +
                 "Booking Details:\n" +
-                "Package ID: " + packageDetails.getPackageId() + "\n" +
-                "Package Category: " + packageDetails.getPackageCategory() + "\n" +
-                "Hotel ID: " + packageDetails.getHotelId() + "\n" +
-                "Vehicle ID: " + packageDetails.getVehicleId() + "\n" +
-                "Start Date: " + packageDetails.getStartDate() + "\n" +
-                "End Date: " + packageDetails.getEndDate() + "\n" +
-                "No. of Days: " + packageDetails.getNoOfDays() + "\n" +
-                "Travel Area: " + packageDetails.getTravelArea() + "\n" +
-                "No. of Adults: " + packageDetails.getNoOfAdults() + "\n" +
-                "No. of Children: " + packageDetails.getNoOfChildren() + "\n" +
-                "Total Head Count: " + packageDetails.getTotalHeadCount() + "\n" +
-                "Pets Allowed: " + (packageDetails.isPetsStatus() ? "Yes" : "No") + "\n" +
-                "Guide Requested: " + (packageDetails.isGuideStatus() ? "Yes" : "No") + "\n" +
-                "Guide ID: " + packageDetails.getGuideId() + "\n" +
-                "Total Package Value: " + packageDetails.getTotalPackageValue() + "\n" +
-                "User ID: " + packageDetails.getUserId() + "\n" +
-                "Paid Value: " + packageDetails.getPaidValue() + "\n" +
-                "Remarks: " + packageDetails.getRemarks() + "\n\n" +
+                "Owner FullName : " + packageDetails.getOwnerFullName() + "\n" +
+                "Owner Email: " + packageDetails.getOwnerEmail() + "\n" +
+                "OwnerCardNumber: " + packageDetails.getOwnerCardNumber() + "\n" +
+                "Payment Date : " + packageDetails.getPaymentDate() + "\n" +
+                "Payment Amount: " + packageDetails.getPaymentAmount() + "\n" +
+
                 "Regards,\n" +
-                "Damian Peiris - Team NextTravel.";
+                "Prabhash Wijerathna - Team NextTravel.";
 
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("drpeiris3.edu@gmail.com");
+            message.setFrom("prabhashwijerathna2001@gmail.com");
             message.setSubject("NextTravel - Booking Confirmation!");
             message.setTo(packageDetails.getEmail());
             message.setText(body);

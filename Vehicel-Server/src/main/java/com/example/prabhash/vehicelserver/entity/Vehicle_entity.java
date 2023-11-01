@@ -23,6 +23,8 @@ public class Vehicle_entity {
 
     private String vehicleBrand;
 
+
+
     private String vehicleCategory;
 
     private String vehicleName;
@@ -37,6 +39,9 @@ public class Vehicle_entity {
 
     private String vehicleInteriorImg;
 
+    private String fee_forDay;
+
+
     private String seatCapacity;
 
     private String transmissionType;
@@ -48,6 +53,7 @@ public class Vehicle_entity {
     private String driverlicenseImg;
 
     private String remarks;
+
 
 //other
 

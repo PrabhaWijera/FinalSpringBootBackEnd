@@ -18,10 +18,13 @@ public class Payment_entity {
     @GeneratedValue(strategy = GenerationType.UUID)
 
     private String payID;
+    private String ownerFullName;
+    private String OwnerEmail;
+    private String OwnerCardNumber;
     private String userID;
     private String packageDetailsID;
     private String paymentDate;
-    private double paymentAmount;
+    private String paymentAmount;
     private String paymentImageLocation;
 
 /*    private String DIncome;

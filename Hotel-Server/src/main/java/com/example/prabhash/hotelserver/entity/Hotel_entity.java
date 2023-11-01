@@ -36,6 +36,8 @@ public class Hotel_entity {
     private double fullBoardWithACLuxuryRoomTriple;
     private double halfBoardWithACLuxuryRoomTriple;
 
+
+
     private double hotelFee;
     private String cancellationCriteria;
     private String remarks;

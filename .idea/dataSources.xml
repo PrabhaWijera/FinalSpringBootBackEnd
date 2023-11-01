@@ -50,11 +50,11 @@
       <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBpackage</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="springboot_assigmentFinalPackageDBVehicle@localhost" uuid="ece7567c-967e-48f4-83a7-5197b22084c3">
+    <data-source source="LOCAL" name="springbootFinalPackageDBVehicle@localhost" uuid="ae2130d0-2783-4854-829b-c7f5ce9e3adc">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/springboot_assigmentFinalPackageDBVehicle</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/springbootFinalPackageDBVehicle</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
