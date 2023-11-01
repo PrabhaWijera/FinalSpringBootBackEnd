@@ -21,6 +21,7 @@ public class Vehicle_api {
 
     @GetMapping(path = "getVehiclesByPackageId",params = "packageId",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response>getVehicleByPackageId(@RequestParam("packageId") String packageId){
+        System.out.println("getVehicleByPackageId");
         return vehicleService.findVehiclesByPackageID(packageId);
     }
 

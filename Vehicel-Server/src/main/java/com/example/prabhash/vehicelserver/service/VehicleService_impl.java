@@ -151,6 +151,7 @@ public class VehicleService_impl implements VehicleService {
         vehicle.forEach(vE -> {
             vehicleDtos.add(modelMapper.map(vE,Vehicle_dto.class));
         });
+        System.out.println("findVehiclesByPackageID");
         return createAndSendResponse(HttpStatus.OK.value(),"Vehicle Success received",vehicleDtos);
     }
 }

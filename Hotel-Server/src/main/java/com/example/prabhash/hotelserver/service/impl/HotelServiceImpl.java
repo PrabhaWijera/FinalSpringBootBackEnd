@@ -144,6 +144,7 @@ public class HotelServiceImpl implements HotelService {
         hotels.forEach(he -> {
             hotelDtos.add(mapper.map(he,Hotel_dto.class));
         });
+        System.out.println("findHotelsByPackagingID");
         return createAndSendResponse(HttpStatus.OK.value(),"Hotels Successfully recived!! ",hotelDtos);
     }
 

@@ -155,6 +155,7 @@ public class PackageService_impl implements PackageService {
         }
         return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Package does not exist!", null);
     }
+
     @Override
     public List<String> getHotelsList(String packageID) {
         Optional<Package_entity> pack = packageRepo.findById(packageID);

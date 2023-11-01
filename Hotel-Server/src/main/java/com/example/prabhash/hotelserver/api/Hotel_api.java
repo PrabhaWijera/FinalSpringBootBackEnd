@@ -59,6 +59,7 @@ public class Hotel_api {
         return hotelService.deleteAllHotels(hotelIDs);
 
     }
+
     @GetMapping(path = "/getHotelByHotelName",params = "hotelName",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response>getHotelByName(@RequestParam("hotelName")String hotelName){
         return hotelService.findByHotelName(hotelName);
@@ -71,6 +72,7 @@ public class Hotel_api {
 
     @GetMapping(path = "getHotelByPackageId",params = "packageId",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response> getHotelByPackageID(@RequestParam("packageId") String packageId){
+        System.out.println("getHotelByPackageID");
         return hotelService.findHotelsByPackagingID(packageId);
     }
 
