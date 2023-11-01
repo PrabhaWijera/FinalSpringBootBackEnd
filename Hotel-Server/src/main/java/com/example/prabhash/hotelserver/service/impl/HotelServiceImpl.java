@@ -133,4 +133,19 @@ public class HotelServiceImpl implements HotelService {
         }
         return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Hotel Not Found!", null);
     }
+
+    @Override
+    public ResponseEntity<Response> findHotelsByPackagingID(String packageId) {
+        List<Hotel_entity> hotels=hotelRepo.findByPackageId(packageId);
+        if (hotels.isEmpty()){
+            return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Hotels not found for the given packages!!!!",null);
+        }
+        List<Hotel_dto> hotelDtos=new ArrayList<>();
+        hotels.forEach(he -> {
+            hotelDtos.add(mapper.map(he,Hotel_dto.class));
+        });
+        return createAndSendResponse(HttpStatus.OK.value(),"Hotels Successfully recived!! ",hotelDtos);
+    }
+
+
 }

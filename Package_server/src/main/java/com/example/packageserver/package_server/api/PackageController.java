@@ -24,6 +24,10 @@ public class PackageController {
     @Autowired
     private VehicleInterface vehicleInterface;
 
+
+
+
+
     @PostMapping(path = "/saveHotelID",produces = MediaType.APPLICATION_JSON_VALUE,params = {"packageID","hotelID"})
     public ResponseEntity<Response> saveHotelID(@RequestParam("packageID") String packageID, @RequestParam("hotelID") String hotelID){
         return packageService.addHotel(packageID,hotelID);

@@ -13,4 +13,6 @@ public interface VehicleService  extends SuperService<Vehicle_dto,String> {
 
 
     ResponseEntity<Response> findByVehicleBrand(String vehicleBrand);
+
+    ResponseEntity<Response> findVehiclesByPackageID(String packageId);
 }

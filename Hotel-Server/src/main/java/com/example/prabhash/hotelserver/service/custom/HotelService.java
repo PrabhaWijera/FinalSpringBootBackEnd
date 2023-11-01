@@ -11,4 +11,7 @@ import java.util.List;
 public interface HotelService extends SuperService<Hotel_dto,String> {
     ResponseEntity<Response>deleteAllHotels(List<String> hotelIDList);
     ResponseEntity<Response> findByHotelName(String hotelName);
+
+
+    ResponseEntity<Response> findHotelsByPackagingID(String packageId);
 }

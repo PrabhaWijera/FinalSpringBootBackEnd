@@ -19,6 +19,14 @@ public class Vehicle_api {
     private VehicleService vehicleService;
 
 
+    @GetMapping(path = "getVehiclesByPackageId",params = "packageId",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Response>getVehicleByPackageId(@RequestParam("packageId") String packageId){
+        return vehicleService.findVehiclesByPackageID(packageId);
+    }
+
+
+
+
     @GetMapping("/check")
     public String getCheck_vehicle(){
         return "Vehicle API run";

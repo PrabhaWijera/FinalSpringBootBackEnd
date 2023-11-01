@@ -69,6 +69,10 @@ public class Hotel_api {
     }
 
 
+    @GetMapping(path = "getHotelByPackageId",params = "packageId",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Response> getHotelByPackageID(@RequestParam("packageId") String packageId){
+        return hotelService.findHotelsByPackagingID(packageId);
+    }
 
 
 }

@@ -19,6 +19,8 @@ public class Vehicle_entity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String vehicleID;
 
+    private String packageId;
+
     private String vehicleBrand;
 
     private String vehicleCategory;
@@ -48,5 +50,5 @@ public class Vehicle_entity {
     private String remarks;
 
 //other
-    private String package_id;
+
 }
