@@ -19,8 +19,8 @@ public class Payment_entity {
 
     private String payID;
     private String ownerFullName;
-    private String OwnerEmail;
-    private String OwnerCardNumber;
+    private String ownerEmail;
+    private String ownerCardNumber;
     private String userID;
     private String packageDetailsID;
     private String paymentDate;

@@ -25,6 +25,7 @@ public class ESController {
     @PostMapping(path = "/sendPackageDetails",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response>sendPackageDetails(@RequestBody PackageDetailsDTO packageDetailsDTO){
         System.out.println(packageDetailsDTO.toString());
+        System.out.println("Email Details: "+packageDetailsDTO.toString());
         return emailService.sendPackageDetails(packageDetailsDTO);
 
 

@@ -13,8 +13,8 @@ public class Payment_dto implements Serializable, SuperDto {
     private String payID;
 
     private String ownerFullName;
-    private String OwnerEmail;
-    private String OwnerCardNumber;
+    private String ownerEmail;
+    private String ownerCardNumber;
     private String paymentDate;
 
 
