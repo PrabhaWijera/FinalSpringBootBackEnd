@@ -29,7 +29,8 @@ public class PackageDetails_dto implements Serializable, SuperDTO {
     private Date endDuration;
 
 
-    private String NameGuide;
+    private String nameGuide;
+
     private int noOfDays;
 
     private String travelArea;
@@ -46,7 +47,7 @@ public class PackageDetails_dto implements Serializable, SuperDTO {
 
     private String guideID;
 
-    private double TotalPackageValue;
+    private double totalPackageValue;
 
     private String userID;
 

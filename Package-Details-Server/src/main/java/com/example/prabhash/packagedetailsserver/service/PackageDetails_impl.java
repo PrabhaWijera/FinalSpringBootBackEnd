@@ -60,7 +60,7 @@ public class PackageDetails_impl implements PackageDetailsService {
         packageDetails_repo.save(modelMapper.map(packageDetailsDTO, PackageDetail_entity.class));
         System.out.println("USER ID "+packageDetailsDTO.getUserID());
         System.out.println("PACKAGE DETAILS  ID "+packageDetailsDTO.getPackageDetailsID());
-        userInterface.updatePackageDetailsID(packageDetailsDTO.getUserID(),packageDetailsDTO.getPackageDetailsID());
+      //  userInterface.updatePackageDetailsID(packageDetailsDTO.getUserID(),packageDetailsDTO.getPackageDetailsID());
         return createAndSendResponse(HttpStatus.CREATED.value(), "PackageDetails Created Successfully!",null);
 
     }

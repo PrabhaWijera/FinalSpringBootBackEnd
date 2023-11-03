@@ -63,13 +63,15 @@ public class PackageDetailsDTO implements Serializable {
     private String email;
 */
 
-private String ownerFullName;
-    private String OwnerEmail;
-    private String OwnerCardNumber;
-    private String paymentDate;
-    private String paymentAmount;
 
-    private String name;
-    private String email;
+    private String ownerFullName;
+    private String ownerEmail;
+    private String ownerCardNumber;
+    private String paymentAmount;
+    private String paymentDate;
+
+
+
+
 
 }

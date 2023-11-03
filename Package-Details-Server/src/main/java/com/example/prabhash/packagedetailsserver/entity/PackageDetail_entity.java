@@ -29,7 +29,6 @@ public class PackageDetail_entity {
     private String packageCategory;
 
     private int hotelID;
-
     private int vehicleID;
 
     private Date startDuration;
@@ -37,9 +36,9 @@ public class PackageDetail_entity {
     private Date endDuration;
 
 
+    private String nameGuide;
 
     private int noOfDays;
-
 
     private String travelArea;
 
@@ -55,9 +54,7 @@ public class PackageDetail_entity {
 
     private String guideID;
 
-    private String NameGuide;
-
-    private double TotalPackageValue;
+    private double totalPackageValue;
 
     private String userID;
 

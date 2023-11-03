@@ -31,7 +31,7 @@ public class EmailService {
         String otp = generateAndSaveOtp(email.getToEmail());
         String body = "Dear " + email.getName() + ",\n\n" + "Welcome aboard!.\n\n" +  "\n\n" + "Use the OTP below to complete your signup:\n" + otp + "\n\n" + "Regards,\n" + "Prabhash Wijerathna - Team NextTravel.";
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("prabhashwijerathna2001@gmail.com");
+        message.setFrom("prabhash04wije@gmail.com");
         message.setTo(email.getToEmail());
         message.setText(body);
         message.setSubject("NextTravel - Welcome Aboard!");
@@ -44,10 +44,10 @@ public class EmailService {
 
     }
     public ResponseEntity<Response> sendPackageDetails(PackageDetailsDTO packageDetails) {
-        String body = "Dear " + packageDetails.getName() + ",\n\n" +
+        String body = "Dear " + packageDetails.getOwnerFullName() + ",\n\n" +
                 "Thank you for booking with us!\n\n" +
                 "Booking Details:\n" +
-                "Owner FullName : " + packageDetails.getOwnerFullName() + "\n" +
+               /* "Owner FullName : " + packageDetails.getOwnerFullName() + "\n" +*/
                 "Owner Email: " + packageDetails.getOwnerEmail() + "\n" +
                 "OwnerCardNumber: " + packageDetails.getOwnerCardNumber() + "\n" +
                 "Payment Date : " + packageDetails.getPaymentDate() + "\n" +
@@ -58,9 +58,9 @@ public class EmailService {
 
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("prabhashwijerathna2001@gmail.com");
+            message.setFrom("prabhash04wije@gmail.com");
             message.setSubject("NextTravel - Booking Confirmation!");
-            message.setTo(packageDetails.getEmail());
+            message.setTo(packageDetails.getOwnerEmail());
             message.setText(body);
             mailSender.send(message);
         } catch (MailException exception){
